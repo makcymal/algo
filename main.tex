@@ -1,0 +1,35 @@
+\documentclass[a4paper,landscape,10pt]{article}
+\usepackage{trdpkg}
+
+
+% Specify the name of the team and the members
+\newcommand{\team}{Far Eastern FU: BosonHiggsPrice}
+\newcommand{\membersshortly}{Сказкин, Луговой, Горбатенко}
+\newcommand{\membersfully}{Максим Сказкин, Алексей Луговой, Дмитрий Горбатенко}
+
+
+\begin{document}
+
+% Make title page
+\mktitle{dvfu.png}
+
+% Make headers on each page except title
+\mkheader
+
+\begin{multicols}{2}
+  \tableofcontents
+  \thispagestyle{fancy}
+  
+  \input{contest/contest.tex}
+  \input{structures/structures.tex}
+  \input{sorting/sorting.tex}
+  \input{strings/strings.tex}
+  \input{graphs/graphs.tex}
+  \input{math/math.tex}
+  \input{geometry/geometry.tex}
+  \input{dp/dp.tex}
+  \input{various/various.tex}
+
+\end{multicols}
+
+\end{document}

@@ -1,0 +1,21 @@
+\section{Contest}
+
+\subsection{Template}
+
+\cppcode{contest/template.cpp}
+
+\subsubsection{Link streams with files}
+\cppcode{contest/files.cpp}
+
+\subsubsection{Optimization}
+
+\vspace{1em}
+\begin{itemize}
+  \item \verb|target("O3")| -- auto-vectorizing, inlining, unrolling loops
+  \item \verb|target("Ofast")| -- \verb|O3| + some \bf{unsafe} math (beware of it)
+  \item \verb|optimize("trapv")| -- debug int overflows
+\end{itemize}
+Use \verb|__attribute__((target("..."), optimize("...")))| to enable for the function only
+
+\subsubsection{Comparing doubles}
+\cppcode{contest/doubles.cpp}

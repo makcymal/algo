@@ -1,0 +1,162 @@
+\section{Geometry}
+
+\subsection{Points}
+
+Point in the plane. For better performance use \verb|ll| instead of \verb|double|, but remember about rounds and possible overflows. When comparing \verb|double|s remember about \verb|EPS|.
+\cppcode{geometry/point.cpp}
+
+\subsubsection{Closest Points}
+
+The closest pair of points, i.e. with minimum distance.
+\cppcode{geometry/closest_points.cpp}
+
+\subsection{Lines}
+
+\subsubsection{Point -- Line distance}
+
+Signed distance from point \verb|p| to line containing points \verb|s, e|. Distance > 0 on the left side as seen from \verb|s| towards \verb|e|.
+\cppcode{geometry/line_dist.cpp}
+
+\subsubsection{Point -- Segment Distance}
+
+Shortest unsigned distance between point \verb|p| and the line segment \verb|[s, e]|.
+\cppcode{geometry/segment_dist.cpp}
+
+\subsubsection{Lines Intersection}
+
+If the lines \verb|s1-e1| and \verb|s2-e2| have single intersection point then \verb|{1, point}| returned. If no intersection point exists \verb|{0, (0, 0)}| returned. If infinitely many exist \verb|{-1, (0, 0)}| returned.
+\cppcode{geometry/line_isect.cpp}
+
+\subsubsection{Segments Intersection}
+
+If the line segments \verb|[s1, e1]| and \verb|[s2, e2]| have single intersection point then it's returned. If no intersection point exists an empty vector returned. If infinitely many exist a vector of 2 endpoints of common segment returned.
+\cppcode{geometry/segment_isect.cpp}
+
+\subsubsection{Side of Point}
+
+Where point \verb|p| is as seen from \verb|s| towards \verb|e|: 1/0/-1 $\iff$ left/on line/right.
+\cppcode{geometry/side_of.cpp}
+
+\subsubsection{Linear Transformation}
+
+Apply the same linear transformation that takes line \verb|s1-e1| to \verb|s2-e2| to point \verb|p|.
+\cppcode{geometry/transform.cpp}
+
+\subsection{Circles}
+
+\subsubsection{Circles Intersection}
+
+The pair of points at which two circles intersect. Returns \verb|false| in case of no intersection.
+\cppcode{geometry/circle_isect.cpp}
+
+\subsubsection{Circles Tangents}
+
+The external tangents of two circles if \verb|r2 >= 0| or internal if \verb|r2 < 0|. Returns 0, 1 or 2 tangents.
+\cppcode{geometry/circle_tangents.cpp}
+
+\subsubsection{Intersection of Circle with Polygon}
+
+The area of the intersection of a circle with CCW polygon.
+\complexity{n}{1}
+\cppcode{geometry/circle_poly_isect.cpp}
+
+\subsubsection{Circumcircle}
+
+The circle going intersecting all three points.
+\cppcode{geometry/circumcircle.cpp}
+
+\subsubsection{Minimum Enclosing Circle}
+
+The minimum circle that encloses a set of points.
+\complexity{n}{1}
+\cppcode{geometry/enclosing_circle.cpp}
+
+\subsection{Polygons}
+
+\subsubsection{Point Inside Polygon}
+
+Checks if \verb|p| lies within the polygon. If \verb|strict=false| then boundary isn't included.
+\tc{n}
+\cppcode{geometry/inside_poly.cpp}
+
+\subsubsection{Area of Polygon}
+
+Twice the signed area of CCW polygon. CW enumeration gives negative area.
+\cppcode{geometry/poly_area.cpp}
+
+\subsubsection{Centroid of Polygon}
+
+The center of mass for a polygon.
+\cppcode{geometry/poly_center.cpp}
+
+\subsection{Hull}
+
+CCW convex hull, points on the edges aren't considered.
+\complexity{n\log n}{n}
+\cppcode{geometry/convex_hull.cpp}
+
+\subsubsection{Convex Hull Diameter}
+
+The two points with max distance on a CCW convex hull.
+\cppcode{geometry/hull_diam.cpp}
+
+\subsubsection{Point Inside Convex Hull}
+
+Checks if \verb|p| lies within CCW convex hull. If \verb|strict=false| then boundary isn't included.
+
+\tc{\log n}
+\cppcode{geometry/inside_hull.cpp}
+
+\subsection{Some Formulas}
+
+\subsubsection{Triangles}
+
+Given side lengths $a, b, c$, vertices $A, B, C$, angles $\alpha, \beta, \gamma$ and semiperimeter $p = \frac{a + b + c}{2}$:
+
+$$
+\text{Area } S = \sqrt{p(p-a)(p-b)(p-c)} \hspace{2em}
+\text{Area } S = \frac12 | (A - C) \times (B - C) |
+$$
+
+$$
+\text{Circumradius } R = \frac{abc}{4S} \hspace{2em}
+\text{Inradius } r = \frac{S}{p}
+$$
+
+$$
+\text{Median } m_a = \frac12 \sqrt{2b^2 + 2c^2 - a^2}  \hspace{2em}
+\text{Bisector } s_a = \sqrt{bc\left(1 - \left(b+c\right)^{-2}\right)}
+$$
+
+$$
+\text{Law of sines } \frac{\sin\alpha}{a} = \frac{\sin\beta}{b} = \frac{\sin\gamma}{c} = \frac1{2R} \hspace{2em}
+\text{Law of cosines } a^2 = b^2 + c^2 - 2bc\cos\alpha
+$$
+
+$$
+\text{Law of tangents } \frac{a + b}{a - b} = \frac{\tan\frac{\alpha + \beta}{2}}{\tan\frac{\alpha - \beta}{2}} \hspace{2em}
+\text{Triple tangent }
+\frac{a}{\tan\alpha} + \frac{b}{\tan\beta} + \frac{c}{\tan\gamma} = 0
+$$
+
+\subsubsection{Quadrilaterals}
+
+Given side lengths $a, b, c, d$, diagonals $e, f$, diagonals angle $\theta$, semiperimeter $p$ and \mbox{$F = b^2 + d^2 - a^2 - c^2$}
+
+\vspace{-1em}
+$$4S = 2ef\sin\theta = F\tan\theta = \sqrt{4e^2f^2 - F^2}$$
+
+For cyclic quadrilaterals $ef = ac + bd$, $S = \sqrt{(p - a)(p - b)(p - c)(p - d)}$
+
+\subsubsection{Spherical coordinates}
+
+$$
+x = r \sin \theta \cos \varphi \hspace{2em}
+y = r \sin \theta \sin \varphi \hspace{2em}
+z = r \cos \theta
+$$
+$$
+r = \sqrt{x^2 + y^2 + z^2} \hspace{2em}
+\theta = \text{acos}(z / r) \hspace{2em}
+\varphi = \text{atan2}(y, x)
+$$

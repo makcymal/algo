@@ -1,0 +1,31 @@
+\section{Strings}
+
+\subsection{Prefix function}
+Given string \verb|s|, $\forall$ \verb|i| finds max \verb|n| s.t. \verb|s[:n] == s[i-n+1 : i+1]|.
+\complexity{n}{n}
+\cppcode{strings/pref_func.cpp}
+
+\subsection{Z function}
+Given string \verb|s|, $\forall$ \verb|i| finds max \verb|n| s.t. \verb|s[:n] == s[i : i + n]|.
+\complexity{n}{n}
+\cppcode{strings/z_func.cpp}
+
+\subsection{Manacker algorithm}
+Given string \verb|s|, $\forall$ \verb|i| finds max \verb|n| s.t. \verb|s[:n] == s[i-n+1 : i+1]|.
+\complexity{n}{n}
+\cppcode{strings/manacker.cpp}
+
+\subsection{Hashing}
+Try using 31-bit 970'592'641, 45-bit 31'443'539'979'727 or 52-bit 3'006'703'054'056'749
+\cppcode{strings/hashing.cpp}
+
+\subsection{Prefix Tree}
+
+Efficiently stores strings as tree.
+\complexity{\max(n_i)}{\sum n_i}
+\cppcode{strings/trie.cpp}
+
+% \subsection{Aho-Corasick}
+
+% Given the set of words, find all occurences of each word in string
+% \cppcode{contents/strings/corasick.cpp}

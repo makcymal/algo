@@ -1,0 +1,49 @@
+\section{Graphs}
+
+\subsection{Dijkstra Algorithm}
+
+Shortest path lengths to all vertices from \verb|src| given all the edges are of positive cost
+
+\complexity{n \log m}{max(n, m)}
+\cppcode{graphs/dijkstra.cpp}
+
+\subsection{Shortest Path Faster}
+
+Shortest path lengths to all vertices from \verb|src| with negative weights allowed. If negative cycle exists, \verb|false| returned.
+\bf{TC: } $O(m)$ for random graphs, $O(nm)$ in worst cases
+\cppcode{graphs/spf.cpp}
+
+\subsection{Floyd-Warshall}
+
+Shortest paths between all pairs of vertices. The graph may have negative weights, but no negative weight cycles. \tc{n^3}
+\cppcode{graphs/floyd.cpp}
+
+\subsection{Euler Path}
+
+Path containing all the edges. The graph must be connected and degrees of $\ge n - 2$ vertices must be even. Don't forget to reverse resulting vector.
+\tc{m}
+\cppcode{graphs/euler.cpp}
+
+\subsection{Hamilton Path}
+
+Path containing all the vertices. That's NP-complete problem so $n$ must be really small. \tc{2^n}
+\cppcode{graphs/hamilton.cpp}
+
+\subsection{Topological Sort}
+
+Orders vertices s.t. all edges go from left to right
+\cppcode{graphs/toposort.cpp}
+
+\subsection{Stronly Connected Components}
+
+Splits graph into set of components, s.t. within one components there are paths in both directions between any two vertices. Compressing every component into single vertex makes graph acyclic. \tc{n}
+\cppcode{graphs/strongly_conn.cpp}
+
+\subsection{Bridge Edges \& Cut Vertices}
+
+Given undirected graph, finds edges s.t. removing each of them increases number of connected components. \tc{O(n + m)}
+\cppcode{graphs/bridges.cpp}
+
+Small change in \verb|dfs| needed to find cut vertices s.t. removing each of them along with their edges increases number of connected components:
+\cppcode{graphs/cutpoints.cpp}
+

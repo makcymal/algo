@@ -1,0 +1,222 @@
+\section{Math}
+
+\subsection{Equations}
+
+$$
+ax^2 + bx + c = 0
+\implies
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+,\;
+x_{extr} = -\frac{b}{2a}
+,\;
+y_{extr} = -\frac{b^2}{4a} + c
+$$
+
+$$
+\begin{pmatrix}
+  a & b \\
+  c & d
+\end{pmatrix}^{-1}
+=
+\frac1{ad - bc}
+\begin{pmatrix}
+  d & -b \\
+  -c & a
+\end{pmatrix}
+$$
+
+Given an equation $Ax = b$, find $x_i = \frac{\det A'_i}{\det A}$, where $A'_i$ is $A$ with i'th column replaced by $b$
+
+\subsection{LU Decomposition}
+Matrix as product of lower triangular matrix and upper triangular matrix. \tc{n^3}
+\cppcode{math/lu.cpp}
+
+\subsection{Polynomials}
+Instantiate polynomial from it's coefficients or from given point set using interpolation. Find it's root but beware that it may give more roots to the left or to the right
+\cppcode{math/poly.cpp}
+
+\subsection{Extremums}
+
+Finds minimum of $f$ on $[a, b]$ where $f$ has one local minima
+\tc{(b - a) / \varepsilon}
+\cppcode{math/extremum.cpp}
+
+\subsection{Sums}
+
+$$c^a + c^{a+1} + \ldots + c^b = \frac{c^{b+1} - c^a}{c - 1},\; c \ne 1$$
+
+$$
+1 + \ldots + n = \frac{n(n+1)}{2}
+\hspace{20pt}
+1^2 + \ldots + n^2 = \frac{n(2n+1)(n+1)}{6}
+$$
+
+$$
+1^3 + \ldots + n^3 = \frac{n^2(n+1)^2}{4}
+\hspace{20pt}
+1^4 + \ldots + n^4 = \frac{n(n+1)(2n+1)(3n^2+3n-1)}{30}
+$$
+
+\subsection{Trigonometry}
+
+$$
+\sin(a \pm b) = \sin a \cos b \pm \sin b \cos a
+\;\;\;
+\cos(a \pm b) = \cos a \cos b \mp \sin a \sin b
+$$
+
+$$
+\tan(a \pm b) = \frac{\tan a \pm \tan b}{1 \mp \tan a \tan b}
+\;\;\;
+\cot(a \pm b) = \frac{\cot a \cot b \mp 1}{\cot a \pm \cot b}
+$$
+
+$$
+\sin a \pm \sin b = 2 \sin\frac{a \pm b}{2} \cos\frac{a \mp b}{2}
+\;\;\;
+\cos a + \cos b = 2 \cos\frac{a + b}{2} \cos\frac{a - b}{2}
+$$
+
+$$
+(A + B) \frac{\tan(a - b)}{2} = (A - B) \frac{\tan(a + b)}{2}
+\text{, where } A, B \text{ -- sides opposite to } a, b
+$$
+
+$$
+(x, y) + \angle\varphi = (x \cos\varphi - y \sin\varphi, x \sin\varphi + y \cos\varphi)
+$$
+
+\subsection{Number theory}
+
+\subsubsection{Bézout's identity}
+
+$$
+a, b \in \mathbb{Z}
+\implies
+\exists x, y \in \mathbb{Z}: xa + yb = \gcd{(a, b)}
+$$
+
+\vspace{-1em}
+$$
+a, b \in \mathbb{N}
+\implies
+\exists x, y \in \mathbb{N}: xa - yb = \gcd{(a, b)}
+$$
+
+\vspace{-1em}
+$$
+\text{if } (x, y) - \text{ solution, then all the solutions: }
+\left(
+  x + \frac{kb}{\gcd{(a, b)}}, y - \frac{ka}{\gcd{(a, b)}}
+\right), k \in \mathbb{Z}
+$$
+
+\subsubsection{Euclid Extended}
+
+Finds $\gcd$ and Bézout coefficients
+\cppcode{math/euclid.cpp}
+
+\subsubsection{Chinese Remainder Theorem}
+
+Finds $x:\; x \equiv a \pmod{m},\; x \equiv b \pmod{n}$. If $|a| < m,\; |b| < n \implies 0 \le x < \text{lcm}(m,n)$. Assumes $mn < 2^{62}$.
+\tc{\log n}
+\cppcode{math/crt.cpp}
+
+\subsubsection{Modular Arithmetics}
+
+\vspace{1em}
+\begin{itemize}
+  \item $(a + b) \mod m = ((a \mod m) + (b \mod m)) \mod m$
+  \item $(a - b) \mod m = ((a \mod m) - (b \mod m) + m) \mod m$
+  \item $(a \cdot b) \mod m = ((a \mod m) \cdot (b \mod m)) \mod m$
+  \item $(b / a) \mod m = ((b \mod m) \cdot (a^{-1} \pmod m)) \mod m$
+\end{itemize}
+
+\subsubsection{Long Modular Mul, Pow}
+For \verb|ull|: $0 \le a, b \le m \le 7.2 \cdot 10^{18}$
+\cppcode{math/modulo/modmul.cpp}
+\cppcode{math/modulo/modpow.cpp}
+
+\subsubsection{Inverting By Modulo}
+
+Computes $a^{-1} \pmod m$. \bf{Note that $m$ must be prime or coprime with $a$}:
+\cppcode{math/modulo/inv.cpp}
+
+\subsubsection{Primes}
+
+Miller-Rabin primality test for numbers $< 7 \cdot 10^{18}$. \tc{1}
+\cppcode{math/is_prime.cpp}
+
+\subsubsection{Generating primes}
+
+Eratosthenes sieve. Note that \verb|S = (int)round(sqrt(LIM))|
+\cppcode{math/primes_sieve.cpp}
+
+\subsubsection{Factorization}
+
+$\rho$-Pollard factorization, factors are returned in arbitrary order.
+\tc{\sqrt[4]{n}}
+\cppcode{math/factorize.cpp}
+
+\subsubsection{Divisibility}
+
+\vspace{1em}
+\begin{itemize}
+  \item $n \divby 3 \;(\text{or } 9) \iff \sum\{\text{digits}\} \divby 3 \;(\text{or } 9)$
+  \item $n \divby 7 \iff \left(\sum\{\text{even digits}\} - \sum\{\text{odd digits}\}\right) \divby 7$
+  \item $n \divby 11 \iff \left(\sum\{\text{even digits}\} - \sum\{\text{odd digits}\}\right) \divby 11 \text{ or} = 0$
+\end{itemize}
+
+\subsubsection{Pythagorean triples}
+
+Given two numbers $m,n$: $m > n > 0$, $m$ and $n$ are coprime, $m - n$ is odd, generate triple: $a = m^2 - n^2, b = 2mn, c = m^2 + n^2$. In such way triples are unique. When multipliying triples by $k > 0$, it's no longer guaranteed.
+
+\subsection{Combinatorics}
+
+\subsubsection{Combinations}
+
+\vspace{-1.5em}
+\begin{multicols}{3}
+
+  $$C_n^k = \frac{n!}{k!(n-k)!}$$
+
+  $$\overline{C_n^k} = C_{n+k-1}^k$$
+
+  $$C_n^0 = C_n^n = 1$$
+
+  $$C_n^k = C_n^{n - k}$$
+
+  $$C_{n - 1}^{k - 1} + C_{n - 1}^k = C_n^k$$
+
+  $$C_n^k = \frac{n}{k} C_{n - 1}^{k - 1}$$
+
+  $$\sum\limits_{k=0}^n C_n^k = 2^n$$
+
+  $$\sum\limits_{r=0}^k C_m^r \cdot C_n^{k - r} = C_{n + m}^k$$
+
+  $$\sum\limits_{r=k}^n C_r^k = C_{n+1}^{k+1}$$
+
+  $$\sum\limits_{k=0}^n \left(C_n^k\right)^2 = C_{2n}^n$$
+
+  $$\sum\limits_{k=0}^m (-1)^k \cdot C_n^k = (-1)^m \cdot C_{n - 1}^m$$
+
+\end{multicols}
+
+Computes $C_n^k$ modulo $m$. Precomputes factorials and reversed factorials. \tc{n}
+\cppcode{math/modulo/comb.cpp}
+
+\subsubsection{Catalan numbers}
+
+$$C_0 = 1,\; C_n = \frac1{n+1} \binom{2n}{n} = \binom{2n}{n} - \binom{2n}{n-1},\; C_{n+1}=\frac{2(2n+1)}{n+2}C_n = \sum C_i C_{n-i}$$
+
+\begin{itemize}
+  \item Valid parentheses string of length $2n$
+  \item Binary trees with $n$ internal nodes ($n + 1$ leaves)
+  \item Paths from $(0, 0)$ to $(2n, 0)$ with steps $(1, 1)$, $(1, -1)$ \ul{above} X-axis
+  \item Triangulations of polygon with $n+2$ vertices
+  \item Connections of $2n$ points on circle into $n$ non-crossing chords
+  \item Decomposition of $n$ into sum of positives (order matters)
+  \item Monopaths in grid $n\times n$ from left-top to right-bottom not crossing diagonal
+  \item Tuples $(x_1 \ldots x_n): x_1 = 1,\; x_i \le x_{i - 1} + 1$
+\end{itemize}
+

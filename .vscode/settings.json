@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "bit": "cpp",
+    "vector": "cpp"
+  },
+  "explorer.excludeGitIgnore": false
+}

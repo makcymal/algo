@@ -1,0 +1,156 @@
+\ProvidesPackage{trdpkg}[Style package for competitive programming TRD]
+
+\usepackage[english,russian]{babel}
+\usepackage{xparse}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\selectlanguage{english}
+
+
+%%%%%%%%%%%%%
+%%% FONTS %%%
+%%%%%%%%%%%%%
+
+\usepackage[T1]{fontenc}
+\usepackage[scaled=0.75]{DejaVuSansMono}
+
+\renewcommand{\it}[1]{\textit{#1}}
+\renewcommand{\bf}[1]{\textbf{#1}}
+\newcommand{\ul}[1]{\underline{#1}}
+
+\usepackage{amsfonts}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%% GEOMETRY, LAYOUT %%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}
+\usepackage{multicol}
+\geometry{top=2cm, bottom=0.7cm, left=0.7cm, right=0.7cm}
+
+\usepackage{enumitem}
+\setlist[itemize]{before=\vspace{-0.8em}, itemsep=-0.2em, after=\vspace{-0.6em}}
+\renewcommand{\labelitemi}{\scalebox{0.8}{$\star$}}
+
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0pt}{*0.8}{*0.6}
+\titlespacing*{\subsection}
+{0pt}{*0.8}{*0.6}
+\titlespacing*{\subsubsection}
+{0pt}{*0.8}{*0.6}
+
+% Remove the numbering
+\renewcommand{\thesubsubsection}{\hspace{-1em}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+%%%%%%%%%%%%%%%%%
+%%% TITLEPAGE %%%
+%%%%%%%%%%%%%%%%%
+\newcommand{\mktitle}[1]{
+  \begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    \IfNoValueTF{#1}{}{
+      \includegraphics[width=0.2\textwidth]{#1}
+      \vspace{2cm}\par
+    }
+    {\Huge\bfseries Team Reference Document\par}
+    \vspace{2cm}
+    {\huge \team\par}
+    \vspace{0.5cm}
+    {\large \membersfully\par}
+    \vfill
+    {\large 2024\par}
+  \end{titlepage}
+}
+
+%%%%%%%%%%%%%%
+%%% HEADER %%%
+%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\newcommand{\mkheader}{
+  \fancyhead[L]{\team\ (\membersshortly)}
+  \fancyhead[R]{\thepage\ of \pageref{LastPage}}
+  \addto\captionsrussian{
+    \renewcommand{\contentsname}{Contents}
+  }
+}
+\setlength{\headsep}{1em}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% TABLE OF CONTENTS %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\addto\captionsrussian{
+  \renewcommand{\contentsname}%
+  {Contents}
+}
+\setcounter{tocdepth}{2}
+
+\usepackage{tocloft}
+\setlength{\cftbeforesecskip}{0.2em}
+
+%%%%%%%%%%%%
+%%% MATH %%%
+%%%%%%%%%%%%
+\renewcommand{\mod}{\;\%\;}
+
+\DeclareRobustCommand{\divby}{%
+  \mathrel{\vbox{\baselineskip.65ex\lineskiplimit0pt\hbox{.}\hbox{.}\hbox{.}}}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% CODE LISTINGS %%%
+%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\usepackage{listings}
+
+\lstset{
+  aboveskip=0.4em,
+  belowskip=0.4em,
+}
+
+\definecolor{darkgreen}{rgb}{0.0, 0.39, 0.0}
+\definecolor{darkred}{rgb}{0.5, 0.0, 0.0}
+\definecolor{darkblue}{rgb}{0.0, 0.0, 0.5}
+
+\lstdefinestyle{cpp}{
+  language=C++,
+  backgroundcolor=\color{lightgray!15},
+  basicstyle=\fontsize{10pt}{9pt}\ttfamily,
+  keywordstyle=\color{darkblue},
+  commentstyle=\color{darkgreen},
+  stringstyle=\color{darkred},
+  showstringspaces=false
+}
+
+\lstdefinestyle{py}{
+  language=Python,
+  backgroundcolor=\color{lightgray!15},
+  basicstyle=\fontsize{8pt}{10pt}\ttfamily,
+  keywordstyle=\color{blue},
+  commentstyle=\color{green},
+  stringstyle=\color{red},
+  showstringspaces=false
+}
+
+\newcommand{\complexity}[2]{
+  \textbf{TC:} $O(#1)$ \textbf{SC:} $O(#2)$
+}
+
+\newcommand{\tc}[1]{
+  \textbf{TC:} $O(#1)$
+}
+
+\newcommand{\cppcode}[1]{
+  \lstinputlisting[style=cpp]{#1}
+}
+
+\newcommand{\pycode}[1]{
+  \lstinputlisting[style=py]{#1}
+}
