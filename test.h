@@ -1,41 +1,10 @@
-#include <bits/stdc++.h>
-using namespace std;
-
-using ll = long long;
-using ull = unsigned long long;
-using pii = pair<int, int>;
-using pll = pair<ll, ll>;
-using vi = vector<int>;
-using vs = vector<string>;
-using vb = vector<bool>;
-using vvi = vector<vector<int>>;
-using vpii = vector<pair<int, int>>;
-#define hset unordered_set
-#define hmap unordered_map
-#define PB push_back
-#define EB emplace_back
-#define MP make_pair
-#define MT make_tuple
-#define F first
-#define S second
-#define SP ' '
-#define NL '\n'
-#define all(c) (c).begin(), (c).end()
-
-ios::sync_with_stdio(false);
-cin.tie(0); cout.tie(0);
-cin.exceptions(cin.failbit);
-
 void rtrim(string &s) {
-  int n = s.length();
-  while (n >= 1 && isspace(s[n - 1])) n--;
-  s.resize(n);
-}
-
-void submit(istream &input, ostream &output) {
-  int a, b;
-  input >> a >> b;
-  output << a + b;
+  int i = s.size() - 1;
+  for (; i >= 0; i--) {
+    if (!isspace(s[i]))
+      break;
+  }
+  s.resize(i + 1);
 }
 
 void test(string filename) {
@@ -45,7 +14,7 @@ void test(string filename) {
   ifstream testfile(filename);
   stringstream input, expected, observed;
   string line;
-  int n_tests = 0;
+  int n_tests;
   bool prev_failed = false;
 
   while (getline(testfile, line)) {
@@ -86,19 +55,3 @@ void test(string filename) {
     }
   }
 }
-
-#if __has_include("running_locally.h")
-
-int main() {
-  submit(cin, cout);
-  return 0;
-}
-
-#else
-
-int main() {
-  test("tests.conf");
-  return 0;
-}
-
-#endif

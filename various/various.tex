@@ -1,5 +1,18 @@
 \section{Various}
 
+\subsection{Some numbers}
+
+\vspace{0.7em}
+\begin{itemize}
+    \item \verb|INT32_MIN = -2`147`483`648|
+    \item \verb|INT32_MAX = 2`147`483`647|
+    \item \verb|UINT32_MAX = 4`294`967`295|
+    \item \verb|INT64_MIN = -9`223`372`036`854`775`808|
+    \item \verb|INT64_MAX = 9`223`372`036`854`775`807|
+    \item \verb|UINT64_MAX = 18`446`744`073`709`551`615|
+\end{itemize}
+
+\vspace{0.3em}
 \subsection{Bit Manipulations}
 
 Built-in binary operations for \verb|int|'s. With \verb|long long| use suffix \verb|ll| (except \verb|__lg|)
@@ -22,6 +35,7 @@ Optimize \verb|popcount|, \verb|clz| via \verb|#pragma GCC target("popcnt,lzcnt"
 \vspace{1em}
 \begin{itemize}
   \item \verb|x & -x| -- the least bit of \verb|x|
+  \item \verb|x & (x + 1)| -- replace trailing 1's with 0's
   \item \verb|for (int x = m; x;) { --x &= m; ... }| -- loop over all subset masks of \verb|m|
   \item \verb|c = x & -x; r = x + c; (((r ^ x) >> 2) / c)| | \verb|r| -- the next number after \verb|x| with the same number of bits set
 \end{itemize}

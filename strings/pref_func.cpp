@@ -7,6 +7,7 @@ vi pref_func(string &s) {
   }
   return pref;
 }
+
 vi pref_func(string &s, string &t) {
   vi t_pref(t.size(), 0), pref(s.size(), 0);
   for (int i = 1; i < t.size(); ++i) {

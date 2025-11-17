@@ -1,2 +1,9 @@
 .vscode
+.idea
+main.aux
+main.fdb_latexmk
+main.fls
+main.log
 main.pdf
+main.toc
+test-train.h

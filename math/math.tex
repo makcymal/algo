@@ -88,6 +88,14 @@ $$
 
 \subsection{Number theory}
 
+\subsubsection{Fermat's little theorem}
+
+$$
+a \in \mathbb{Z}, p \in \mathbb{P}
+\implies
+a^p \equiv a \pmod{p}
+$$
+
 \subsubsection{Bézout's identity}
 
 $$
@@ -118,7 +126,8 @@ Finds $\gcd$ and Bézout coefficients
 
 \subsubsection{Chinese Remainder Theorem}
 
-Finds $x:\; x \equiv a \pmod{m},\; x \equiv b \pmod{n}$. If $|a| < m,\; |b| < n \implies 0 \le x < \text{lcm}(m,n)$. Assumes $mn < 2^{62}$.
+Finds $x:\; x \equiv a \pmod{m},\; x \equiv b \pmod{n}$. If $|a| < m,\; |b| < n \implies 0 \le x < \text{lcm}(m,n)$.
+Assumes $mn < 2^{62}$.
 \tc{\log n}
 \cppcode{math/crt.cpp}
 
@@ -131,6 +140,9 @@ Finds $x:\; x \equiv a \pmod{m},\; x \equiv b \pmod{n}$. If $|a| < m,\; |b| < n 
   \item $(a \cdot b) \mod m = ((a \mod m) \cdot (b \mod m)) \mod m$
   \item $(b / a) \mod m = ((b \mod m) \cdot (a^{-1} \pmod m)) \mod m$
 \end{itemize}
+
+\vspace{-0.2em}
+$a^{-1} \pmod{m}$ is s.t. $a \cdot (a^{-1} \pmod{m}) \equiv 1 \pmod{m}$
 
 \subsubsection{Long Modular Mul, Pow}
 For \verb|ull|: $0 \le a, b \le m \le 7.2 \cdot 10^{18}$

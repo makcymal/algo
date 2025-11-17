@@ -11,40 +11,47 @@ Set/map with two additional ops.
 \cppcode{structures/ordtree.cpp}
 
 \begin{itemize}
-  \item \verb|iterator find_by_order(size_t ord)|
-  \item \verb|size_t order_of_key(T elem)|
+    \item \verb|iterator find_by_order(size_t ord)|
+    \item \verb|size_t order_of_key(T elem)|
 \end{itemize}
 
-\subsection{Rope}
-\verb|rope| -- vector with fast slicing, insertion, but slow accessing.
-\complexity{\log n}{n}
-\cppcode{structures/rope.cpp}
+%\subsection{Rope}
+%\verb|rope| -- vector with fast slicing, insertion, but slow accessing.
+%\complexity{\log n}{n}
+%\cppcode{structures/rope.cpp}
 
 \begin{itemize}
-  \item \verb|void push_back(T elem)|
-  \item \verb|T pop_back()|
-  \item \verb|void insert(int pos, rope targ)|
-  \item \verb|void erase(int pos, int count)|
-  \item \verb|rope substr(int pos, int count)|
-  \item \verb|void replace(int pos, int count, rope targ)|
-  \item \verb|rope operator+(rope lhs, rope rhs)|
+    \item \verb|void push_back(T elem)|
+    \item \verb|T pop_back()|
+    \item \verb|void insert(int pos, rope targ)|
+    \item \verb|void erase(int pos, int count)|
+    \item \verb|rope substr(int pos, int count)|
+    \item \verb|void replace(int pos, int count, rope targ)|
+    \item \verb|rope operator+(rope lhs, rope rhs)|
 \end{itemize}
 
 \subsection{Segment Tree}
 
-Zero-indexed. Segments exclude end: $[a, b)$. \verb|tree[0]| isn't used.
+Zero-indexed.
+Segments exclude end: $[a, b)$.
+\verb|tree[0]| isn't used.
 \complexity{\log n}{n}
 \cppcode{structures/segtree.cpp}
 
 \subsection{Lazy Segment Tree}
 
-The same, but also can apply \verb|f| to the whole segment.
+The same, but also can update a whole segment.
+In following code: query() returns minimum, update() increments values of a segment
 \complexity{\log n}{n}
 \cppcode{structures/lazy_segtree.cpp}
 
 \subsection{Fenwick Tree}
 
-Zero-indexed, segments include end: ($[a, b]$): \verb|[i - (i & -i) + 1, i]| and \verb|[i, i + (i & -i)]|
+Zero-indexed.
+Segments include end: $[a, b]$.
+\verb|tree[0]| isn't used.
+Counting \verb|data| is one-indexed: \verb|tree[i]| keeps \verb|f(data[i - (i & -i) + 1, i])|, \verb|data[i]| is counted in all \verb|i := i + (i & -i)|.
+\\
 \complexity{\log n}{n}
 \cppcode{structures/fentree.cpp}
 
@@ -56,5 +63,5 @@ The same, but on the plane.
 
 \subsection{RMQ}
 
-Query minimum on any range in constant time. Preproc: \complexity{n \log n}{n \log n}
+Query minimum on any range in $O(1)$. Preproc: \complexity{n \log n}{n \log n}
 \cppcode{structures/rmq.cpp}
