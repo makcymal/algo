@@ -1,22 +1,23 @@
 struct DSU {
-  vi parents;
-  mt19937 rng;
-
-
-  DSU(int n) {
-    parents.resize(n);
-    for (int i = 0; i < n; ++i) parents[i] = i;
-    rng = mt19937(chrono::steady_clock::now().time_since_epoch().count());
+  vi e;
+  vector<pii> st;
+  DSU(int n) : e(n, -1) {}
+  int size(int x) { return -e[find(x)]; }
+  int time() { return st.size(); }
+  int find(int x) { return e[x] < 0 ? x : find(e[x]); }
+  bool join(int a, int b) {
+    a = find(a), b = find(b);
+    if (a == b) return false;
+    if (e[a] > e[b]) swap(a, b);
+    st.push_back({a, e[a]});
+    st.push_back({b, e[b]});
+    e[a] += e[b];
+    e[b] = a;
+    return true;
   }
-
-  int find(int idx) {
-    if (parents[idx] == idx) return idx;
-    return parents[idx] = find(parents[idx]);
-  }
-
-  void join(int lhs, int rhs) {
-    if (rng() % 2) parents[find(lhs)] = find(rhs);
-    else parents[find(rhs)] = find(lhs);
+  void undo(int t) {
+    for (int i = time(); i --> t;)
+      e[st[i].first] = st[i].second;
+    st.resize(t);
   }
 };
-

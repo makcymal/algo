@@ -160,3 +160,27 @@ r = \sqrt{x^2 + y^2 + z^2} \hspace{2em}
 \theta = \text{acos}(z / r) \hspace{2em}
 \varphi = \text{atan2}(y, x)
 $$
+
+\subsection{Line Containers}
+
+\subsubsection{Line Container}
+
+Container where you can add lines of the form kx+m, and query maximum values at point x.
+\tc{\log n}
+\cppcode{geometry/line_container.cpp}
+
+\subsubsection{Interval Container}
+
+Add and remove intervals from a set of disjoint intervals \verb|[a, b)|.
+\tc{\log n}
+\cppcode{geometry/interval_container.cpp}
+
+\subsubsection{Interval Cover}
+
+Compute indices of smallest set of intervals covering another interval \verb|[a, b)|.
+If \verb|[a, b]|, needed change \verb|(A)| to add \verb|or R.empty()|.
+Returns empty set on failure.
+\tc{n \log n}
+\cppcode{geometry/interval_cover.cpp}
+
+

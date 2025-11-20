@@ -10,22 +10,28 @@
     \item \verb|INT64_MIN = -9`223`372`036`854`775`808|
     \item \verb|INT64_MAX = 9`223`372`036`854`775`807|
     \item \verb|UINT64_MAX = 18`446`744`073`709`551`615|
+    \item \verb|(int)'a' = 97, (int)'z' = 122|
+    \item \verb|(int)'A' = 65, (int)'Z' = 90|
+    \item \verb|(int)'0' = 48, (int)'9' = 57|
+    \item Primes: \verb|31|, \verb|53|, \verb|79|, \verb|89|, \verb|131|, \verb|257|, \verb|1e9+7|, \verb|1e9+9|, \verb|2^31-1|, \verb|1e18+3|, \verb|970’592’641|, \verb|31’443’539’979’727|, \verb|3’006’703’054’056’749|
 \end{itemize}
 
 \vspace{0.3em}
+
 \subsection{Bit Manipulations}
 
 Built-in binary operations for \verb|int|'s. With \verb|long long| use suffix \verb|ll| (except \verb|__lg|)
 
+\vspace{0.3em}
 \begin{itemize}
-  \item \verb|__bit_floor| -- floor to 2's power
-  \item \verb|__bit_ceil| -- ceil to 2's power
-  \item \verb|__builtin_popcount| -- number of 1's
-  \item \verb|__builtin_parity| -- parity of number of 1's
-  \item \verb|__builtin_clz| -- number of leading zeros
-  \item \verb|__builtin_ctz| -- number of trailing zeros
-  \item \verb|__builtin_ffs| -- index of rightmost 1 (1-indexed)
-  \item \verb|__lg| -- floor(log2) = index of leftmost 1 (0-indexed)
+    \item \verb|__bit_floor| -- floor to 2's power
+    \item \verb|__bit_ceil| -- ceil to 2's power
+    \item \verb|__builtin_popcount| -- number of 1's
+    \item \verb|__builtin_parity| -- parity of number of 1's
+    \item \verb|__builtin_clz| -- number of leading zeros
+    \item \verb|__builtin_ctz| -- number of trailing zeros
+    \item \verb|__builtin_ffs| -- index of rightmost 1 (1-indexed)
+    \item \verb|__lg| -- floor(log2) = index of leftmost 1 (0-indexed)
 \end{itemize}
 
 Optimize \verb|popcount|, \verb|clz| via \verb|#pragma GCC target("popcnt,lzcnt")|
@@ -34,10 +40,10 @@ Optimize \verb|popcount|, \verb|clz| via \verb|#pragma GCC target("popcnt,lzcnt"
 
 \vspace{1em}
 \begin{itemize}
-  \item \verb|x & -x| -- the least bit of \verb|x|
-  \item \verb|x & (x + 1)| -- replace trailing 1's with 0's
-  \item \verb|for (int x = m; x;) { --x &= m; ... }| -- loop over all subset masks of \verb|m|
-  \item \verb|c = x & -x; r = x + c; (((r ^ x) >> 2) / c)| | \verb|r| -- the next number after \verb|x| with the same number of bits set
+    \item \verb|x & -x| -- the least bit of \verb|x|
+    \item \verb|x & (x + 1)| -- replace trailing 1's with 0's
+    \item \verb|for (int x = m; x;) { --x &= m; ... }| -- loop over all subset masks of \verb|m|
+    \item \verb|c = x & -x; r = x + c; (((r ^ x) >> 2) / c)| | \verb|r| -- the next number after \verb|x| with the same number of bits set
 \end{itemize}
 
 \subsubsection{Vector Hashing}

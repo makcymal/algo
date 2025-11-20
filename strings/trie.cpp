@@ -8,13 +8,11 @@ struct Node {
   int exit = -1;
   vector<int> forward = vector(K, -1);
   vector<int> automat = vector(K, -1);
-
   Node(char ch = '^', int par = -1) : ch(ch), par(par) {}
 };
 
 struct Trie {
   vector<Node> buf = vector<Node>(1);
-
   void insert(string &s, int idx) {
     int b = 0;
     for (char ch : s) {
@@ -27,7 +25,6 @@ struct Trie {
     }
     buf[b].idx = idx;
   }
-
   int search(string &s) {
     int b = 0;
     for (char ch : s) {
@@ -37,7 +34,6 @@ struct Trie {
     }
     return b;
   }
-
   int get_suff(int b) {
     if (buf[b].suff == -1) {
       if (b == 0 || buf[b].par == 0) buf[b].suff = 0;
@@ -46,7 +42,6 @@ struct Trie {
     }
     return buf[b].suff;
   }
-
   int get_exit(int b) {
     if (buf[b].exit == -1) {
       if (b == 0 || buf[b].par == 0) buf[b].exit = 0;
@@ -55,7 +50,6 @@ struct Trie {
     }
     return buf[b].exit;
   }
-
   int get_transition(int b, char ch) {
     int chi = ch - 'a';
     if (buf[b].automat[chi] == -1) {

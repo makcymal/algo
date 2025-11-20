@@ -18,5 +18,4 @@ vi eratosthenes() {
       if (!block[i]) pr.push_back((L + i) * 2 + 1);
   }
   for (int i : pr) is_prime[i] = 1;
-  return pr;
-}
+  return pr; }

@@ -16,7 +16,9 @@ Given string \verb|s|, $\forall$ \verb|i| finds max \verb|n| s.t. \verb|s[:n] ==
 \cppcode{strings/manacker.cpp}
 
 \subsection{Hashing}
-Try using 31-bit 970'592'641, 45-bit 31'443'539'979'727 or 52-bit 3'006'703'054'056'749
+\verb|B| > alphabet size, \verb|M| -- quiet large modulo.
+Try using \verb|31|, \verb|53|, \verb|79|, \verb|89|, \verb|131| for \verb|B|; \verb|970'592'641|, \verb|1e9+7| for \verb|M|.
+Segment \verb|[lb, rb]| is inclusive.
 \cppcode{strings/hashing.cpp}
 
 \subsection{Prefix Tree}

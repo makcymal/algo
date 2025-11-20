@@ -32,7 +32,8 @@ Matrix as product of lower triangular matrix and upper triangular matrix. \tc{n^
 \cppcode{math/lu.cpp}
 
 \subsection{Polynomials}
-Instantiate polynomial from it's coefficients or from given point set using interpolation. Find it's root but beware that it may give more roots to the left or to the right
+Instantiate polynomial from its coefficients or from given point set using interpolation.
+Find it's root but beware that it may give more roots to the left or to the right
 \cppcode{math/poly.cpp}
 
 \subsection{Extremums}
@@ -126,7 +127,8 @@ Finds $\gcd$ and Bézout coefficients
 
 \subsubsection{Chinese Remainder Theorem}
 
-Finds $x:\; x \equiv a \pmod{m},\; x \equiv b \pmod{n}$. If $|a| < m,\; |b| < n \implies 0 \le x < \text{lcm}(m,n)$.
+Finds $x:\; x \equiv a \pmod{m},\; x \equiv b \pmod{n}$.
+If $|a| < m,\; |b| < n \implies 0 \le x < \text{lcm}(m,n)$.
 Assumes $mn < 2^{62}$.
 \tc{\log n}
 \cppcode{math/crt.cpp}
@@ -142,7 +144,7 @@ Assumes $mn < 2^{62}$.
 \end{itemize}
 
 \vspace{-0.2em}
-$a^{-1} \pmod{m}$ is s.t. $a \cdot (a^{-1} \pmod{m}) \equiv 1 \pmod{m}$
+$a^{-1} \pmod{m}$ is s.t $a \cdot (a^{-1} \pmod{m}) \equiv 1 \pmod{m}$. $a^{-1}$ exists $\iff a, m$ are coprime ($\gcd{a,m} = 1)$)
 
 \subsubsection{Long Modular Mul, Pow}
 For \verb|ull|: $0 \le a, b \le m \le 7.2 \cdot 10^{18}$
@@ -152,7 +154,7 @@ For \verb|ull|: $0 \le a, b \le m \le 7.2 \cdot 10^{18}$
 \subsubsection{Inverting By Modulo}
 
 Computes $a^{-1} \pmod m$. \bf{Note that $m$ must be prime or coprime with $a$}:
-\cppcode{math/modulo/inv.cpp}
+\cppcode{math/modulo/modinv.cpp}
 
 \subsubsection{Primes}
 
@@ -161,7 +163,8 @@ Miller-Rabin primality test for numbers $< 7 \cdot 10^{18}$. \tc{1}
 
 \subsubsection{Generating primes}
 
-Eratosthenes sieve. Note that \verb|S = (int)round(sqrt(LIM))|
+Eratosthenes sieve.
+Note that \verb|S = (int)round(sqrt(LIM))|
 \cppcode{math/primes_sieve.cpp}
 
 \subsubsection{Factorization}
@@ -181,7 +184,9 @@ $\rho$-Pollard factorization, factors are returned in arbitrary order.
 
 \subsubsection{Pythagorean triples}
 
-Given two numbers $m,n$: $m > n > 0$, $m$ and $n$ are coprime, $m - n$ is odd, generate triple: $a = m^2 - n^2, b = 2mn, c = m^2 + n^2$. In such way triples are unique. When multipliying triples by $k > 0$, it's no longer guaranteed.
+Given two numbers $m,n$: $m > n > 0$, $m$ and $n$ are coprime, $m - n$ is odd, generate triple: $a = m^2 - n^2, b = 2mn, c = m^2 + n^2$.
+In such way triples are unique.
+When multipliying triples by $k > 0$, it's no longer guaranteed.
 
 \subsection{Combinatorics}
 
@@ -214,8 +219,9 @@ Given two numbers $m,n$: $m > n > 0$, $m$ and $n$ are coprime, $m - n$ is odd, g
 
 \end{multicols}
 
-Computes $C_n^k$ modulo $m$. Precomputes factorials and reversed factorials. \tc{n}
-\cppcode{math/modulo/comb.cpp}
+Computes $C_n^k$ modulo $m$.
+Precomputes factorials and reversed factorials. \tc{n}
+\cppcode{math/modulo/modcomb.cpp}
 
 \subsubsection{Catalan numbers}
 
