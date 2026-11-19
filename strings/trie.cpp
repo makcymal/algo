@@ -29,7 +29,7 @@ struct Trie {
     int b = 0;
     for (char ch : s) {
       int chi = ch - 'a';
-      if (buf[b].forward[chi] == 0) return -1;
+      if (buf[b].forward[chi] == -1) return -1;
       b = buf[b].forward[chi];
     }
     return b;

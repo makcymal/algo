@@ -1,7 +1,7 @@
 #define arg(p, q) atan2((p).cross(q), (p).dot(q))
-D circle_poly_isect(P c, D a, VP &pg) {
+D circle_poly_isect(P c, D r, VP &pg) {
   auto tri = [&](P p, P q) {
-    auto r2 = a * a / 2;
+    auto r2 = r * r / 2;
     P d = q - p;
     auto a = d.dot(p) / d.dist2(), b = (p.dist2() - a * a) / d.dist2();
     auto det = a * a - b;

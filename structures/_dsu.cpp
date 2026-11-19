@@ -2,7 +2,6 @@ struct DSU {
   vi parents;
   mt19937 rng;
 
-
   DSU(int n) {
     parents.resize(n);
     for (int i = 0; i < n; ++i) parents[i] = i;

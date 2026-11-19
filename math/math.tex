@@ -178,8 +178,12 @@ $\rho$-Pollard factorization, factors are returned in arbitrary order.
 \vspace{1em}
 \begin{itemize}
   \item $n \divby 3 \;(\text{or } 9) \iff \sum\{\text{digits}\} \divby 3 \;(\text{or } 9)$
-  \item $n \divby 7 \iff \left(\sum\{\text{even digits}\} - \sum\{\text{odd digits}\}\right) \divby 7$
-  \item $n \divby 11 \iff \left(\sum\{\text{even digits}\} - \sum\{\text{odd digits}\}\right) \divby 11 \text{ or} = 0$
+  \item $n \divby 7 \;-\; 1\,234\,567 \divby 7 \iff 123\,456 - 2 \cdot 7 \divby 7 \;\text{(repeat)}$
+  \item $n \divby 7 \;-\; 1\,234\,567 \divby 7 \iff 567 - 234 + 1 \divby 7$
+  \item $n \divby 11 \;-\; 1\,234\,567 \divby 11 \iff 7 - 6 + 5 - 4 + 3 - 2 + 1 \divby 11$
+  \item $n \divby 11 \;-\; 1\,234\,567 \divby 11 \iff 567 - 234 + 1 \divby 11$
+  \item $n \divby 13 \;-\; 1\,234\,567 \divby 13 \iff 123\,456 + 4 \cdot 7 \divby 13 \;\text{(repeat)}$
+  \item $n \divby 13 \;-\; 1\,234\,567 \divby 13 \iff 567 - 234 + 1 \divby 13$
 \end{itemize}
 
 \subsubsection{Pythagorean triples}
@@ -233,7 +237,6 @@ $$C_0 = 1,\; C_n = \frac1{n+1} \binom{2n}{n} = \binom{2n}{n} - \binom{2n}{n-1},\
   \item Paths from $(0, 0)$ to $(2n, 0)$ with steps $(1, 1)$, $(1, -1)$ \ul{above} X-axis
   \item Triangulations of polygon with $n+2$ vertices
   \item Connections of $2n$ points on circle into $n$ non-crossing chords
-  \item Decomposition of $n$ into sum of positives (order matters)
   \item Monopaths in grid $n\times n$ from left-top to right-bottom not crossing diagonal
   \item Tuples $(x_1 \ldots x_n): x_1 = 1,\; x_i \le x_{i - 1} + 1$
 \end{itemize}

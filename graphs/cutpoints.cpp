@@ -9,7 +9,7 @@ void dfs(int v, int p = -1) {
     } else {
       dfs(to, v);
       low[v] = min(low[v], low[to]);
-      if (low[to] > tin[v] and p != -1) ITS_CUTPOINT(v);
+      if (low[to] >= tin[v] and p != -1) ITS_CUTPOINT(v);
       children++;
     }
   }

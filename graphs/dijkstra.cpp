@@ -1,16 +1,17 @@
-vi dijkstra(vector<vector<pii>> &graph, int src) {
-  int n = graph.size();
-  vi dist(n, INT32_MAX);
+vi dijkstra(vector<vector<pii>> &g, int src) {
+  vector<pair<ll, int>> hp;
   dist[src] = 0;
-  priority_queue<pii, vpii, greater<>> pq;
-  pq.emplace(0, src);
-  while (!pq.empty()) {
-    while (!pq.empty() and dist[pq.top().S] <= pq.top().F) pq.pop();
-    if (pq.empty()) continue;
-    auto [d, v] = pq.top();
-    pq.pop();
-    dist[v] = d;
-    for (auto [to, len] : graph[v]) pq.emplace(d + len, to);
+  hp.push_back({src, 0});
+  while (!hp.empty()) {
+    auto [d, v] = HP_POP(hp);
+    if (d > dist[v]) continue;
+    for (auto [to, len]: g[v]) {
+      if (d + len < dist[to]) {
+        dist[to] = d + len;
+        prev[to] = v;
+        HP_PUSH(hp, make_pair(dist[to], to));
+      }
+    }
   }
   return dist;
 }

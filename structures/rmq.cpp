@@ -1,5 +1,4 @@
-struct RMQ {
-  typedef int T;
+struct RMQ {    // min!
   vector<vector<T>> seg;
   RMQ(vector<T> &data) : seg(1, data) {
     for (int pw = 1, k = 1; 2 * pw <= data.size(); pw *= 2, ++k) {
@@ -11,5 +10,4 @@ struct RMQ {
   T query(int lb, int rb) {
     int pw = 31 - __builtin_clz(rb - lb);
     return min(seg[pw][lb], seg[pw][rb - (1 << pw)]);
-  }
-};
+  } };

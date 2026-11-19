@@ -1,10 +1,7 @@
-struct LazySegtree {
-  typedef int T;
-  vector<T> tree, lazy;
-  int size;
-  LazySegtree(vector<T> &data) : size(__bit_ceil(data.size())) {
-    tree.resize(2 * size, INT32_MAX);
-    lazy.resize(2 * size);
+struct LazySegtree {    // min! for sum: INT32_MAX->0, min->+, tree[node] += x*(rb-lb);
+  int size; vector<T> tree, lazy;
+  LazySegtree(vector<T> &data) : size(bit_ceil(data.size())) {
+    tree.resize(2 * size, INT32_MAX); lazy.resize(2 * size);
     copy(data.begin(), data.end(), tree.begin() + size);
     for (int i = size - 1; i > 0; --i) tree[i] = min(tree[2 * i], tree[2 * i + 1]);
   }
@@ -20,13 +17,11 @@ struct LazySegtree {
     if (rb == -1) rb = size;
     if (qr <= lb or rb <= ql) return;
     if (ql <= lb && rb <= qr) {
-      lazy[node] += x;
-      tree[node] += x;
+      lazy[node] += x; tree[node] += x;
     } else {
       push(node, lb, rb);
       int md = lb + (rb - lb + 1) / 2;
-      update(ql, qr, x, 2 * node, lb, md);
-      update(ql, qr, x, 2 * node + 1, md, rb);
+      update(ql, qr, x, 2 * node, lb, md); update(ql, qr, x, 2 * node + 1, md, rb);
       tree[node] = min(tree[2 * node], tree[2 * node + 1]);
     }
   }
@@ -37,5 +32,4 @@ struct LazySegtree {
       update(lb, rb, lazy[node], 2 * node + 1, md, rb);
       lazy[node] = 0;
     }
-  }
-};
+  } };
