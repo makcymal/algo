@@ -1,0 +1,1 @@
+cout << fixed << setprecision(int) << (sgn(x) == 0 ? 0 : x)

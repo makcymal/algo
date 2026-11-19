@@ -9,17 +9,17 @@ If undo isn't needed, skip \verb|st|, \verb|time()|, \verb|undo()|.
 \subsection{PBDS Tree}
 Set/map with two additional ops.
 \complexity{\log n}{n}
-\cppcode{structures/ordtree.cpp}
+\cppcode{structures/ordset.cpp}
 
 \begin{itemize}
     \item \verb|iterator find_by_order(size_t ord)|
     \item \verb|size_t order_of_key(T elem)|
 \end{itemize}
 
-%\subsection{Rope}
-%\verb|rope| -- vector with fast slicing, insertion, but slow accessing.
-%\complexity{\log n}{n}
-%\cppcode{structures/rope.cpp}
+\subsection{Rope}
+\verb|rope| -- vector with fast slicing, insertion, but slow accessing.
+\complexity{\log n}{n}
+\cppcode{structures/rope.cpp}
 
 \begin{itemize}
     \item \verb|void push_back(T elem)|
@@ -66,3 +66,5 @@ The same, but on the plane.
 
 Query minimum on any range in $O(1)$. Preproc: \complexity{n \log n}{n \log n}
 \cppcode{structures/rmq.cpp}
+
+%Maybe add IndexPriorityQueue? (https://algs4.cs.princeton.edu/24pq/IndexMinPQ.java.html)

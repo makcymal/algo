@@ -1,3 +1,0 @@
-a == b or abs(a - b) < max(abs(a), abs(b)) * numeric_limits<double>::epsilon()
-a == b or abs(a - b) < abs(min(a, b)) * numeric_limits<double>::epsilon() * error_factor
-output << fixed << setprecision(int) << ...

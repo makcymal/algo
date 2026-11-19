@@ -1,0 +1,62 @@
+\textbf{PRE-SUBMIT}
+
+{\normalsize
+Read the full statement again, including constraints, input and output format \\
+Do all sample tests pass? Write your own \\
+Could anything overflow (int vs ll / ull, products, sums)? \\
+Is the submitted file / pasted code the right one? \\
+\par}
+
+\vspace{-1em}
+\textbf{WRONG ANSWER}
+
+{\normalsize
+Any uninitialized variables? (-Wall -Wextra catches many) \\
+Are all data structures reset between test cases? \\
+Any edge cases: n = 0 / 1, empty input, duplicated elements, min / max values? \\
+Any overflow? Is int used where ll / ull is needed? Is 1 << k used with k >= 31? \\
+Is accumulate with 0 used when 0LL / 0.0 required? \\
+Any pow(double, double)? Write your own pow(int, int) \\
+Confused n and m, i and j? \\
+Does statement use 1-based indexing? \\
+Is floating-point comparison done with eps? \\
+Is the output precision enough? \\
+Are comparators strict-weak-ordering valid? \\
+Explain the algorithm to a teammate or let them review the code \\
+Relax and have some tea \\
+Rewrite from scratch if nothing helps \\
+\par}
+
+\vspace{-1em}
+\textbf{RUNTIME ERROR}
+
+{\normalsize
+Any out-of-bounds access (replace [i] with .at(i))? \\
+Is a negative index possible (including unsigned wraparound)? \\
+Any infinite or very deep recursion? Try converting to iterative \\
+Any division or modulo by zero? \\
+Any invalidated iterators or references (push\_back / erase in loop)? \\
+Is anything called on an empty container (back, top, front, begin)? \\
+Compile with -g -O1 -Wall -Wextra -fsanitize=address,undefined -D\_GLIBCXX\_DEBUG \\
+\par}
+
+\vspace{-1em}
+\textbf{TIME LIMIT}
+
+{\normalsize
+Any infinite loop (a loop variable that never changes, wrong break condition)? \\
+What is the supposed complexity vs constraints? \\
+Are big objects copied (pass by const reference, auto\& in range-for)? \\
+Is I/O fast (sync\_with\_stdio(false), cin.tie(nullptr), avoid endl)? \\
+Are hmap / hset exposed to anti-hash tests? Use a custom hash \\
+Does hmap / hset rehash? Create with .reserve(number of elements) \\
+Is there hidden O(n) inside a loop (string concat, erase from vector front)? \\
+\par}
+
+\vspace{-1em}
+\textbf{MEMORY LIMIT}
+
+{\normalsize
+Are the array sizes and types (ll / ull vs int) appropriate? \\
+Is memory used by recursion stack, vector capacity doubling? \\
+\par}

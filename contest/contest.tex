@@ -1,21 +1,37 @@
 \section{Contest}
 
-\subsection{Template}
+\subsection{Troubleshoot}
+\input{contest/troubleshoot.tex}
 
+\subsection{Template}
 \cppcode{contest/template.cpp}
 
-\subsubsection{Link streams with files}
+\subsection{Test utility}
+\pycode{contest/test1.py}
+
+\subsection{Pipe file to stream}
 \cppcode{contest/files.cpp}
 
-\subsubsection{Optimization}
+\subsection{Optimization}
 
-\vspace{1em}
+\vspace{0.5em}
 \begin{itemize}
   \item \verb|target("O3")| -- auto-vectorizing, inlining, unrolling loops
   \item \verb|target("Ofast")| -- \verb|O3| + some \bf{unsafe} math (beware of it)
-  \item \verb|optimize("trapv")| -- debug int overflows
+  \item \verb|optimize("trapv")| -- debug int overflows (WA becomes RE)
 \end{itemize}
+
 Use \verb|__attribute__((target("..."), optimize("...")))| to enable for the function only
 
-\subsubsection{Doubles}
-\cppcode{contest/doubles.cpp}
+\vspace{0.2em}
+Check CPU support for \verb|target|:
+
+\cppcode{contest/check_cpu_support.cpp}
+
+\subsection{Doubles}
+
+Compare with epsilon:
+\cppcode{contest/doubles_cmp.cpp}
+
+Output with fixed precision and fix for -0:
+\cppcode{contest/doubles_cout.cpp}

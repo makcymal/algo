@@ -1,6 +1,6 @@
 \section{Various}
 
-\subsection{Some numbers}
+\subsection{Important numbers}
 
 \vspace{0.7em}
 \begin{itemize}
@@ -24,8 +24,6 @@ Built-in binary operations for \verb|int|'s. With \verb|long long| use suffix \v
 
 \vspace{0.3em}
 \begin{itemize}
-    \item \verb|__bit_floor| -- floor to 2's power
-    \item \verb|__bit_ceil| -- ceil to 2's power
     \item \verb|__builtin_popcount| -- number of 1's
     \item \verb|__builtin_parity| -- parity of number of 1's
     \item \verb|__builtin_clz| -- number of leading zeros
@@ -40,18 +38,20 @@ Optimize \verb|popcount|, \verb|clz| via \verb|#pragma GCC target("popcnt,lzcnt"
 
 \vspace{1em}
 \begin{itemize}
+    \item \verb|1 << (31 - __builtin_clz(x))| -- \verb|bit_floor(x)|
+    \item \verb|x == 1 ? 1 : (1 << (32 - __builtin_clz(x - 1)))| -- \verb|bit_ceil(x)|
     \item \verb|x & -x| -- the least bit of \verb|x|
     \item \verb|x & (x + 1)| -- replace trailing 1's with 0's
     \item \verb|for (int x = m; x;) { --x &= m; ... }| -- loop over all subset masks of \verb|m|
     \item \verb|c = x & -x; r = x + c; (((r ^ x) >> 2) / c)| | \verb|r| -- the next number after \verb|x| with the same number of bits set
 \end{itemize}
 
-\subsubsection{Vector Hashing}
-\cppcode{various/vector_hash.cpp}
-
 \subsubsection{Gray Code}
 Two successive numbers differ in only one bit
 \cppcode{various/gray_code.cpp}
+
+\subsection{Hashing}
+\cppcode{various/uhash.cpp}
 
 \subsection{Cycle Detection}
 Given the cyclic functional sequence finds cycle

@@ -1,22 +1,33 @@
-set<pii>::iterator addInterval(set<pii>& is, int L, int R) {
-  if (L == R) return is.end();
-  auto it = is.lower_bound({L, R}), before = it;
-  while (it != is.end() && it->first <= R) {
-    R = max(R, it->second);
-    before = it = is.erase(it);
+set<pii>::iterator add_interval(set<pii> &intervals, int lb, int rb, int &len) {
+  if (lb == rb) return intervals.end();
+  auto it = intervals.lower_bound({lb, rb}), before = it;
+  while (it != intervals.end() && it->first <= rb) {
+    rb = max(rb, it->second);
+    len -= it->S - it->F;
+    before = it = intervals.erase(it);
   }
-  if (it != is.begin() && (--it)->second >= L) {
-    L = min(L, it->first);
-    R = max(R, it->second);
-    is.erase(it);
+  if (it != intervals.begin() && (--it)->second >= lb) {
+    lb = min(lb, it->first);
+    rb = max(rb, it->second);
+    len -= it->S - it->F;
+    intervals.erase(it);
   }
-  return is.insert(before, {L,R});
+  len += rb - lb;
+  return intervals.insert(before, {lb, rb});
 }
-void removeInterval(set<pii>& is, int L, int R) {
-  if (L == R) return;
-  auto it = addInterval(is, L, R);
+void remove_interval(set<pii> &intervals, int lb, int rb, int &len) {
+  if (lb == rb) return;
+  auto it = add_interval(intervals, lb, rb, len);
   auto r2 = it->second;
-  if (it->first == L) is.erase(it);
-  else (int&)it->second = L;
-  if (R != r2) is.emplace(R, r2);
+  if (it->first == lb) {
+    len -= it->S - it->F;
+    intervals.erase(it);
+  } else {
+    len += lb - it->S;
+    (int &) it->second = lb;
+  }
+  if (rb != r2) {
+    len += r2 - rb;
+    intervals.emplace(rb, r2);
+  }
 }
