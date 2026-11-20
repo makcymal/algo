@@ -1,5 +1,4 @@
-int LIM;
-
+int LIM;  // max string length
 struct Power {
   ll B, M;
   vector<ll> val;
@@ -11,7 +10,6 @@ struct Power {
     return val[i];
   };
 };
-
 struct Hasher {
   Power &pw1, &pw2;
   vector<ll> ha1, ha2;
@@ -24,7 +22,7 @@ struct Hasher {
       ha2[i] = (ha2[i - 1] + (s[i] - 'a' + 1) * pw2(i + 1)) % pw2.M;
     }
   }
-  pll operator()(int lb, int rb) {
+  pll operator()(int lb, int rb) { // 0B, EI
     auto ha1lb = (lb == 0 ? 0 : ha1[lb - 1]), ha2lb = (lb == 0 ? 0 : ha2[lb - 1]);
     return {
       ((ha1[rb] + pw1.M - ha1lb) % pw1.M) * pw1(LIM - rb) % pw1.M,

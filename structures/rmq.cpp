@@ -7,7 +7,7 @@ struct RMQ {    // min!
         seg[k][i] = min(seg[k - 1][i], seg[k - 1][i + pw]);
     }
   }
-  T query(int lb, int rb) {
+  T query(int lb, int rb) {  // 0B,EE
     int pw = 31 - __builtin_clz(rb - lb);
     return min(seg[pw][lb], seg[pw][rb - (1 << pw)]);
   } };

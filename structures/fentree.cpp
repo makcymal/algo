@@ -13,13 +13,15 @@ struct Fentree {
       if (i != bit_floor(i)) tree.back() -= pref[i - (i & -i) - 1];
     }
   }
-  T query(int rb) {
+  T query(int rb) { // 0B,EI
     T res = 0;
     for (rb += 1; rb > 0; rb -= (rb & -rb)) res += tree[rb];
     return res;
   }
-  T query(int lb, int rb) { return query(rb) - query(lb - 1); }
-  void update(int i, T val) { for (i += 1; i <= size; i += (i & -i)) tree[i] += val; }
+  T query(int lb, int rb) { return query(rb) - query(lb - 1); } // 0B,EI
+  void update(int i, T val) { // 0B,EI
+    for (i += 1; i <= size; i += (i & -i)) tree[i] += val;
+  }
   void append(T val) {
     tree.push_back(val); size++;
     int rb = tree.size() - 1;

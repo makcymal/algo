@@ -1,10 +1,10 @@
 struct DSU {
   vi e; vector<pii> st;
   DSU(int n) : e(n, -1) {}
-  int size(int x) { return -e[find(x)]; }
+  int size(int x) { return -e[find(x)]; } // 0B
   int time() { return st.size(); }
-  int find(int x) { return e[x] < 0 ? x : find(e[x]); }
-  bool join(int a, int b) {
+  int find(int x) { return e[x] < 0 ? x : find(e[x]); } // 0B
+  bool join(int a, int b) { // 0B
     a = find(a), b = find(b);
     if (a == b) return false;
     if (e[a] > e[b]) swap(a, b);
