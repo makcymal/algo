@@ -42,7 +42,7 @@ Optimize \verb|popcount|, \verb|clz| via \verb|#pragma GCC target("popcnt,lzcnt"
     \item \verb|x == 1 ? 1 : (1 << (32 - __builtin_clz(x - 1)))| -- \verb|bit_ceil(x)|
     \item \verb|x & -x| -- the least bit of \verb|x|
     \item \verb|x & (x + 1)| -- replace trailing 1's with 0's
-    \item \verb|for (int x = m; x;) { --x &= m; ... }| -- loop over all subset masks of \verb|m|
+    \item \verb|for (int x = m; x;) { --x &= m; ... }| -- loop over all subset masks of \verb|m| except \verb|m|
     \item \verb|c = x & -x; r = x + c; (((r ^ x) >> 2) / c)| | \verb|r| -- the next number after \verb|x| with the same number of bits set
 \end{itemize}
 
@@ -50,7 +50,7 @@ Optimize \verb|popcount|, \verb|clz| via \verb|#pragma GCC target("popcnt,lzcnt"
 Two successive numbers differ in only one bit
 \cppcode{various/gray_code.cpp}
 
-\subsection{Hashing}
+\subsection{Custom Hasher}
 \cppcode{various/uhash.cpp}
 
 \subsection{Cycle Detection}

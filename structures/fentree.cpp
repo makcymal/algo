@@ -26,7 +26,7 @@ struct Fentree {
     tree.push_back(val); size++;
     int rb = tree.size() - 1;
     int lb = rb - (rb & -rb) + 1;
-    if (1 <= lb and lb <= rb - 1) tree.back() += query(lb, rb - 1);
+    if (1 <= lb and lb <= rb - 1) tree.back() += query(lb - 1, rb - 2);
   }
   int lower_bound(T x) {
     int i = 0;
@@ -34,6 +34,5 @@ struct Fentree {
       if (i + pw < tree.size() and tree[i + pw] < x) {
         i += pw; x -= tree[i];
       }
-    }
-    return i;
+    } return i;
   } };

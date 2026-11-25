@@ -1,1 +1,1 @@
-cout << fixed << setprecision(int) << (sgn(x) == 0 ? 0 : x)
+cout << fixed << setprecision(p) << (sgn(0.5 * pow(0.1, p)) == 0 ? 0 : x)

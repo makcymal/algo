@@ -33,13 +33,13 @@ Matrix as product of lower triangular matrix and upper triangular matrix. \tc{n^
 
 \subsection{Polynomials}
 Instantiate polynomial from its coefficients or from given point set using interpolation.
-Find it's root but beware that it may give more roots to the left or to the right
+Find its roots but beware that it may give more roots to the left or to the right
 \cppcode{math/poly.cpp}
 
-\subsection{Extremums}
+\subsection{Extrema}
 
 Finds minimum of $f$ on $[a, b]$ where $f$ has one local minima
-\tc{(b - a) / \varepsilon}
+\tc{\log{((b - a) / \varepsilon)}}
 \cppcode{math/extremum.cpp}
 
 \subsection{Sums}
@@ -133,7 +133,7 @@ Assumes $mn < 2^{62}$.
 \tc{\log n}
 \cppcode{math/crt.cpp}
 
-\subsubsection{Modular Arithmetics}
+\subsubsection{Modular Arithmetic}
 
 \vspace{1em}
 \begin{itemize}
@@ -144,7 +144,7 @@ Assumes $mn < 2^{62}$.
 \end{itemize}
 
 \vspace{-0.2em}
-$a^{-1} \pmod{m}$ is s.t $a \cdot (a^{-1} \pmod{m}) \equiv 1 \pmod{m}$. $a^{-1}$ exists $\iff a, m$ are coprime ($\gcd{a,m} = 1)$)
+$a^{-1} \pmod{m}$ is s.t $a \cdot (a^{-1} \pmod{m}) \equiv 1 \pmod{m}$. $a^{-1}$ exists $\iff a, m$ are coprime ($\gcd{(a,m)} = 1$)
 
 \subsubsection{Long Modular Mul, Pow}
 For \verb|ull|: $0 \le a, b \le m \le 7.2 \cdot 10^{18}$
@@ -190,7 +190,7 @@ $\rho$-Pollard factorization, factors are returned in arbitrary order.
 
 Given two numbers $m,n$: $m > n > 0$, $m$ and $n$ are coprime, $m - n$ is odd, generate triple: $a = m^2 - n^2, b = 2mn, c = m^2 + n^2$.
 In such way triples are unique.
-When multipliying triples by $k > 0$, it's no longer guaranteed.
+When multiplying triples by $k > 0$, it's no longer guaranteed.
 
 \subsection{Combinatorics}
 

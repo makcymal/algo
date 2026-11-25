@@ -5,8 +5,7 @@ vi z_func(string &s) {
     if (i <= rb) z[i] = min(z[i - lb], rb - i + 1);
     while (i + z[i] < s.size() and s[i + z[i]] == s[z[i]]) z[i]++;
     if (i + z[i] - 1 > rb) lb = i, rb = i + z[i] - 1;
-  }
-  return z;
+  } return z;
 }
 vi z_func(string &s, string &t) {
   int lb = 0, rb = 0;
@@ -22,6 +21,5 @@ vi z_func(string &s, string &t) {
     if (i <= rb) z[i] = min(tz[i - lb], rb - i + 1);
     while (i + z[i] < s.size() and z[i] < t.size() and s[i + z[i]] == t[z[i]]) z[i]++;
     if (i + z[i] - 1 > rb) lb = i, rb = i + z[i] - 1;
-  }
-  return z;
+  } return z;
 }

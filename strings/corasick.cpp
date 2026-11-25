@@ -1,81 +1,36 @@
-const int K = 26;
-
-struct Node {
-  char ch = '^';
-  int par = -1;
-  int cnt = 0;
-  int suff = -1;
-  int exit = -1;
-  vector<int> forward = vector(K, -1);
-  vector<int> automat = vector(K, -1);
-
-  DERIVE_DEBUG(ch, par, cnt, suff, exit, forward, automat);
-};
-
-struct Trie {
-  vector<Node> buf = vector<Node>(1);
-
-  DERIVE_DEBUG(buf);
-
-  void insert(string &s) {
-    int b = 0;
+struct AhoCorasick {
+  static const int K = 26;
+  vector<array<int, K>> go; vi suff, exit, cnt, order;
+  AhoCorasick() { new_node(); }
+  int new_node() {
+    go.emplace_back(); go.back().fill(-1);
+    suff.push_back(0); exit.push_back(0); cnt.push_back(0);
+    return go.size() - 1;
+  }
+  int insert(string &s) {
+    int v = 0;
     for (char ch : s) {
-      int chi = ch - 'a';
-      if (buf[b].forward[chi] == -1) {
-        buf[b].forward[chi] = buf.size();
-        buf.emplace_back(ch, b);
-      }
-      b = buf[b].forward[chi];
+      if (go[v][ch-'a'] == -1) { int u = new_node(); go[v][ch-'a'] = u; }
+      v = go[v][ch-'a'];
     }
-    buf[b].cnt++;
+    cnt[v]++; return v;
   }
-
-  int count(string &s) {
-    int b = search(s);
-    return b == -1 ? 0 : buf[b].cnt;
+  int search(string &s) {   // works only before build()
+    int v = 0;
+    for (char ch : s) { v = go[v][ch-'a']; if (v == -1) return -1; }
+    return v;
   }
-
-  int search(string &s) {
-    int b = 0;
-    for (char ch : s) {
-      int chi = ch - 'a';
-      if (buf[b].forward[chi] == 0)
-        return -1;
-      b = buf[b].forward[chi];
-    }
-    return b;
-  }
-
-  int get_suff(int b) {
-    if (buf[b].suff == -1) {
-      if (b == 0 || buf[b].par == 0)
-        buf[b].suff = 0;
-      else
-        buf[b].suff = get_transition(get_suff(buf[b].par), buf[b].ch);
-    }
-    return buf[b].suff;
-  }
-
-  int get_exit(int b) {
-    if (buf[b].exit == -1) {
-      if (b == 0 || buf[b].par == 0)
-        buf[b].exit = 0;
-      else if (buf[get_suff(b)].cnt > 0)
-        buf[b].exit = get_suff(b);
-      else
-        buf[b].exit = get_exit(get_suff(b));
-    }
-    return buf[b].exit;
-  }
-
-  int get_transition(int b, char ch) {
-    int chi = ch - 'a';
-    if (buf[b].automat[chi] == -1) {
-      if (buf[b].forward[chi] != -1)
-        buf[b].automat[chi] = buf[b].forward[chi];
-      else
-        buf[b].automat[chi] = (b == 0 ? 0 : get_transition(get_suff(b), ch));
-    }
-    return buf[b].automat[chi];
-  }
+  void build() {  // call once after all insert()'s
+    order.assign(1, 0);
+    for (int i = 0; i < order.size(); i++) {
+      int v = order[i];
+      if (v > 0) exit[v] = cnt[suff[v]] ? suff[v] : exit[suff[v]];
+      for (int c = 0; c < K; c++) {
+        int u = go[v][c]; int f = v > 0 ? go[suff[v]][c] : 0;
+        if (u == -1) go[v][c] = f;
+        else { suff[u] = f; order.push_back(u); }
+      } } }
+  int get_suff(int v) { return suff[v]; }
+  int get_exit(int v) { return exit[v]; }
+  int get_transition(int v, char ch) { return go[v][ch-'a']; }
 };

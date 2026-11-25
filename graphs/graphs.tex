@@ -2,14 +2,14 @@
 
 \subsection{Dijkstra Algorithm}
 
-Shortest path lengths to all vertices from \verb|src| given all the edges are of positive cost
+Shortest path lengths to all vertices from \verb|src| given all the edges are of non-negative cost
 
-\complexity{n \log m}{max(n, m)}
+\complexity{(n+m) \log n}{max(n, m)}
 \cppcode{graphs/dijkstra.cpp}
 
 \subsection{Shortest Path Faster}
 
-Shortest path lengths to all vertices from \verb|src| with negative weights allowed. If negative cycle exists, \verb|false| returned.
+Shortest path lengths to all vertices from \verb|src| with negative weights allowed.
 \bf{TC: } $O(m)$ for random graphs, $O(nm)$ in worst cases
 \cppcode{graphs/spf.cpp}
 
@@ -20,7 +20,7 @@ Shortest paths between all pairs of vertices. The graph may have negative weight
 
 \subsection{Euler Path}
 
-Path containing all the edges. The graph must be connected and degrees of $\ge n - 2$ vertices must be even. Don't forget to reverse resulting vector.
+Path containing all the edges. The graph must be connected and no more than 2 vertices must have odd degree. If 2 vertices have odd degree start in one of them. Don't forget to reverse resulting vector!
 \tc{m}
 \cppcode{graphs/euler.cpp}
 
@@ -36,12 +36,12 @@ Orders vertices s.t. all edges go from left to right
 
 \subsection{Strongly Connected Components}
 
-Splits graph into set of components, s.t. within one components there are paths in both directions between any two vertices. Compressing every component into single vertex makes graph acyclic. \tc{n}
+Splits graph into set of components, s.t. within one components there are paths in both directions between any two vertices. Compressing every component into single vertex makes graph acyclic. \tc{n + m}
 \cppcode{graphs/strongly_conn.cpp}
 
 \subsection{Bridge Edges \& Cut Vertices}
 
-Given undirected graph, finds edges s.t. removing each of them increases number of connected components. \tc{O(n + m)}
+Given undirected graph (not multi!), finds edges s.t. removing each of them increases number of connected components. \tc{n + m}
 \cppcode{graphs/bridges.cpp}
 
 Small change in \verb|dfs| needed to find cut vertices s.t. removing each of them along with their edges increases number of connected components:

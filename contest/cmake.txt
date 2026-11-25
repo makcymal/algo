@@ -1,0 +1,5 @@
+target_compile_options(icpc PRIVATE
+    -g -O0 -pedantic -Wall -Wextra -Wno-sign-compare
+    -fsanitize=address,undefined -fno-sanitize-recover=undefined)
+target_link_options(icpc PRIVATE -fsanitize=address,undefined)
+target_compile_definitions(icpc PRIVATE _GLIBCXX_DEBUG)

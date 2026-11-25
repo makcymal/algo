@@ -1,4 +1,4 @@
 #include <ext/rope>
 using namespace __gnu_cxx;
 
-rope<char> r = "hello!"
+rope<char> r = "hello!";

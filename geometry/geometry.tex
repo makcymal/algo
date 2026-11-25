@@ -62,7 +62,7 @@ The area of the intersection of a circle with CCW polygon.
 
 \subsubsection{Circumcircle}
 
-The circle going intersecting all three points.
+The circle passing through all three points.
 \cppcode{geometry/circumcircle.cpp}
 
 \subsubsection{Minimum Enclosing Circle}
@@ -75,7 +75,7 @@ The minimum circle that encloses a set of points.
 
 \subsubsection{Point Inside Polygon}
 
-Checks if \verb|p| lies within the polygon. If \verb|strict=false| then boundary isn't included.
+Checks if \verb|p| lies within the polygon. If \verb|strict=true| then boundary isn't included.
 \tc{n}
 \cppcode{geometry/inside_poly.cpp}
 
@@ -102,12 +102,16 @@ The two points with max distance on a CCW convex hull.
 
 \subsubsection{Point Inside Convex Hull}
 
-Checks if \verb|p| lies within CCW convex hull. If \verb|strict=false| then boundary isn't included.
+Checks if \verb|p| lies within CCW convex hull. If \verb|strict=true| then boundary isn't included.
 
 \tc{\log n}
 \cppcode{geometry/inside_hull.cpp}
 
 \subsection{Some Formulas}
+
+$$
+\text{Radians } = \text{ Degrees } \frac{\pi}{180}
+$$
 
 \subsubsection{Triangles}
 
@@ -125,7 +129,7 @@ $$
 
 $$
 \text{Median } m_a = \frac12 \sqrt{2b^2 + 2c^2 - a^2}  \hspace{2em}
-\text{Bisector } s_a = \sqrt{bc\left(1 - \left(b+c\right)^{-2}\right)}
+\text{Bisector } s_a = \sqrt{bc\left(1 - a^2\left(b+c\right)^{-2}\right)}
 $$
 
 $$
@@ -136,7 +140,7 @@ $$
 $$
 \text{Law of tangents } \frac{a + b}{a - b} = \frac{\tan\frac{\alpha + \beta}{2}}{\tan\frac{\alpha - \beta}{2}} \hspace{2em}
 \text{Triple tangent }
-\frac{a}{\tan\alpha} + \frac{b}{\tan\beta} + \frac{c}{\tan\gamma} = 0
+\tan\alpha + \tan\beta + \tan\gamma = \tan\alpha \cdot \tan\beta \cdot \tan\gamma
 $$
 
 \subsubsection{Quadrilaterals}
@@ -171,7 +175,7 @@ Container where you can add lines of the form kx+m, and query maximum values at 
 
 \subsubsection{Interval Container}
 
-Add and remove intervals from a set of disjoint intervals \verb|[a, b)|.
+Add and remove intervals from a set of disjoint intervals \verb|[a, b)|. \verb|len| -- total length of intervals.
 \tc{\log n}
 \cppcode{geometry/interval_container.cpp}
 

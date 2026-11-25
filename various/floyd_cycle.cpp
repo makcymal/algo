@@ -5,5 +5,5 @@ pii floyd_cycle(int x) {
   while (tort != hare) tort = f(tort), hare = f(hare),pos++;
   hare = f(hare);
   while (tort != hare) hare = f(hare), len++;
-  return {len, pos}
+  return {len, pos};
 }

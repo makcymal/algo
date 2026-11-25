@@ -1,6 +1,5 @@
 vector<pair<P, P>> circle_tangents(P c1, D r1, P c2, D r2) {
-  P d = c2 - c1;
-  D dr = r1 - r2, d2 = d.dist2(), h2 = d2 - dr * dr;
+  P d = c2 - c1; D dr = r1 - r2, d2 = d.dist2(), h2 = d2 - dr * dr;
   if (d2 == 0 or h2 < 0) return {};
   vector<pair<P, P>> tan;
   for (D sign : {-1, 1}) {

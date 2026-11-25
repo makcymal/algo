@@ -1,3 +1,4 @@
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 int quickselect(vi &nums, int k, int lb, int rb) {
   if (rb - lb == 1) return nums[lb];
   int pivot_idx = lb + rng() % (rb - lb);

@@ -10,13 +10,13 @@ Given string \verb|s|, $\forall$ \verb|i| finds max \verb|n| s.t. \verb|s[:n] ==
 \complexity{n}{n}
 \cppcode{strings/z_func.cpp}
 
-\subsection{Manacker algorithm}
-Given string \verb|s|, $\forall$ \verb|i| finds max \verb|n| s.t. \verb|s[:n] == s[i-n+1 : i+1]|.
+\subsection{Manacher algorithm}
+Given string \verb|s|, $\forall$ \verb|i| finds max radius odd (even) palindrome with center at \verb|i| (between \verb|i| and \verb|i+1|).
 \complexity{n}{n}
 \cppcode{strings/manacker.cpp}
 
 \subsection{Hashing}
-\verb|B| > alphabet size, \verb|M| -- quiet large modulo.
+\verb|B| > alphabet size, \verb|M| -- quite large modulo.
 Try using \verb|31|, \verb|53|, \verb|79|, \verb|89|, \verb|131| for \verb|B|; \verb|970'592'641|, \verb|1e9+7| for \verb|M|.
 Segment \verb|[lb, rb]| is inclusive.
 \cppcode{strings/hashing.cpp}
@@ -27,7 +27,7 @@ Efficiently stores strings as tree.
 \complexity{\max(n_i)}{\sum n_i}
 \cppcode{strings/trie.cpp}
 
-% \subsection{Aho-Corasick}
+\subsection{Aho-Corasick}
 
-% Given the set of words, find all occurences of each word in string
-% \cppcode{contents/strings/corasick.cpp}
+Given the set of words, find all occurrences of each word in string
+\cppcode{strings/corasick.cpp}

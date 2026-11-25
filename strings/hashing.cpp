@@ -1,7 +1,6 @@
 int LIM;  // max string length
 struct Power {
-  ll B, M;
-  vector<ll> val;
+  ll B, M; vector<ll> val;
   Power(ll B, ll M) : B(B), M(M), val(LIM + 1) {
     val[0] = 1;
     for (int i = 1; i <= LIM; ++i) val[i] = (val[i - 1] * B) % M;
@@ -11,12 +10,10 @@ struct Power {
   };
 };
 struct Hasher {
-  Power &pw1, &pw2;
-  vector<ll> ha1, ha2;
+  Power &pw1, &pw2; vector<ll> ha1, ha2;
   Hasher(Power &pw1, Power &pw2, string &s)
   : pw1(pw1), pw2(pw2), ha1(s.size()), ha2(s.size()) {
-    ha1[0] = (s[0] - 'a' + 1) * pw1(1);
-    ha2[0] = (s[0] - 'a' + 1) * pw2(1);
+    ha1[0] = (s[0] - 'a' + 1) * pw1(1); ha2[0] = (s[0] - 'a' + 1) * pw2(1);
     for (int i = 1; i < s.size(); ++i) {
       ha1[i] = (ha1[i - 1] + (s[i] - 'a' + 1) * pw1(i + 1)) % pw1.M;
       ha2[i] = (ha2[i - 1] + (s[i] - 'a' + 1) * pw2(i + 1)) % pw2.M;

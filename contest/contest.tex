@@ -9,6 +9,15 @@
 \subsection{Test utility}
 \pycode{contest/test1.py}
 
+For CMakeLists.txt:
+\vspace{0.6em}
+\begin{itemize}
+  \item \verb|target_compile_options(<target> PRIVATE -g -O0 -pedantic -Wall <...>)|
+  \item \verb|target_link_options(<target> PRIVATE -fsanitize=address,undefined)|
+  \item \verb|target_compile_definitions(<target> PRIVATE _GLIBCXX_DEBUG)|
+  \item No pragma! Disable it with \verb|LOCAL| compile definition and \verb|#ifndef LOCAL|
+\end{itemize}
+
 \subsection{Pipe file to stream}
 \cppcode{contest/files.cpp}
 

@@ -4,9 +4,7 @@ pair<P, P> hull_diam(VP &hull) {
   for (int i = 0; i < j; ++i) {
     for (;; j = (j + 1) % n) {
       diam = max(diam, {(hull[i] - hull[j]).dist2(), {hull[i], hull[j]}});
-      if ((hull[(j + 1) % n] - hull[j]).cross(hull[i + 1] - hull[i]) >= 0)
-        break;
+      if ((hull[(j + 1) % n] - hull[j]).cross(hull[i + 1] - hull[i]) >= 0) break;
     }
-  }
-  return diam.second;
+  } return diam.second;
 }

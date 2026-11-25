@@ -4,7 +4,7 @@
 
 Disjoint sets.
 If undo isn't needed, skip \verb|st|, \verb|time()|, \verb|undo()|.
-\complexity{1}{n}
+\complexity{1}{log n}
 \cppcode{structures/dsu.cpp}
 
 \subsection{PBDS Tree}
@@ -26,7 +26,7 @@ Set/map with two additional ops.
 
 \begin{itemize}
     \item \verb|void push_back(T elem)|
-    \item \verb|T pop_back()|
+    \item \verb|void pop_back()|
     \item \verb|void insert(int pos, rope targ)|
     \item \verb|void erase(int pos, int count)|
     \item \verb|rope substr(int pos, int count)|

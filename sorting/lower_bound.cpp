@@ -4,6 +4,5 @@ int lower_bound(vi &nums, int target) {
     int md = lb + (rb - lb) / 2;
     if (nums[md] < target) lb = md + 1;  // <= for upper_bound
     else rb = md;
-  }
-  return lb;
+  } return lb;
 }

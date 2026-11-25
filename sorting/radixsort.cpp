@@ -5,18 +5,14 @@ void radixsort(vi &nums) {
   vi sorted(nums.size());
   for (int rank = 0, power = 1; rank < max_rank; ++rank, power *= 10) {
     vi digit_count(10, 0);
-    for (int num : nums) {
-      int digit = (num / power) % 10; digit_count[digit] += 1;
-    }
+    for (int num : nums) { int digit = (num / power) % 10; digit_count[digit] += 1; }
     for (int i = 0, digit_count_accum = 0; i < 10; ++i) {
       int tmp = digit_count[i];
-      digit_count[i] = digit_count_accum;
-      digit_count_accum += tmp;
+      digit_count[i] = digit_count_accum; digit_count_accum += tmp;
     }
     for (int num : nums) {
       int digit = (num / power) % 10;
-      sorted[digit_count[digit]] = num;
-      digit_count[digit]++;
+      sorted[digit_count[digit]] = num; digit_count[digit]++;
     }
     nums = sorted;
   }

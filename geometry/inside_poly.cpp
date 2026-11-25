@@ -4,6 +4,5 @@ bool inside_poly(VP &pg, P a, bool strict = true) {
     P &q = pg[(i + 1) % n];
     if (segment_dist(pg[i], q, a) <= EPS) return !strict;
     cnt ^= ((a.y < pg[i].y) - (a.y < q.y)) * a.cross(pg[i], q) > 0;
-  }
-  return cnt;
+  } return cnt;
 }

@@ -4,8 +4,7 @@ vi pref_func(string &s) {
     int c = pref[i - 1];
     while (c > 0 and s[i] != s[c]) c = pref[c - 1];
     if (s[i] == s[c]) pref[i] = c + 1;
-  }
-  return pref;
+  } return pref;
 }
 vi pref_func(string &s, string &t) {
   vi t_pref(t.size(), 0), pref(s.size(), 0);
@@ -19,6 +18,5 @@ vi pref_func(string &s, string &t) {
     int c = pref[i - 1];
     while (c > 0 and s[i] != t[c] or c == t.size()) c = t_pref[c - 1];
     if (s[i] == t[c]) pref[i] = c + 1;
-  }
-  return pref;
+  } return pref;
 }
