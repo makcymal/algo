@@ -1,3 +1,4 @@
+\pagebreak
 \section{Graphs}
 
 \subsection{Dijkstra Algorithm}
@@ -46,4 +47,10 @@ Given undirected graph (not multi!), finds edges s.t. removing each of them incr
 
 Small change in \verb|dfs| needed to find cut vertices s.t. removing each of them along with their edges increases number of connected components:
 \cppcode{graphs/cutpoints.cpp}
+
+\subsection{Rooted Tree}
+
+Tree rooted at \verb|src|, 0-indexed. \verb|preorder[tin[v]] = v|, subtree of \verb|v| = \verb|preorder[tin[v] .. tout[v])|. \verb|lca_ups|: \tc{\log n}, \verb|lca_rmq|: \tc{1}.
+
+\cppcode{graphs/tree.cpp}
 

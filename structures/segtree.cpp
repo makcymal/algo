@@ -16,4 +16,5 @@ struct Segtree {    // min! for sum INT32_MAX->0, min->+
   void update(int i, T val) { // 0B
     tree[i + size] = min(tree[i + size], val);
     for (i += size; i /= 2;) tree[i] = min(tree[2 * i], tree[2 * i + 1]);
-  } };
+  }
+};

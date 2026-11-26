@@ -46,12 +46,17 @@ Optimize \verb|popcount|, \verb|clz| via \verb|#pragma GCC target("popcnt,lzcnt"
     \item \verb|c = x & -x; r = x + c; (((r ^ x) >> 2) / c)| | \verb|r| -- the next number after \verb|x| with the same number of bits set
 \end{itemize}
 
+\subsection{Custom Hasher}
+Use with \verb|hset|/\verb|hmap|: \verb|hset<pii, uhash>|
+\cppcode{various/uhash.cpp}
+
+\subsection{Compressor}
+Compress vector of comparable values into vector of original value ranks.
+\cppcode{various/compressor.cpp}
+
 \subsubsection{Gray Code}
 Two successive numbers differ in only one bit
 \cppcode{various/gray_code.cpp}
-
-\subsection{Custom Hasher}
-\cppcode{various/uhash.cpp}
 
 \subsection{Cycle Detection}
 Given the cyclic functional sequence finds cycle

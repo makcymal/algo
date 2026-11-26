@@ -1,0 +1,122 @@
+\section{Basic (Python)}
+
+\subsection{Small Hacks}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Expression & C++ result & Python result \\
+\hline
+\texttt{-7 // 2}  & $     -3$ & $     -4$ \\
+\texttt{-7 \% 2}  & $     -1$ & $\;\;\:1$  \\
+\texttt{7 // -2}  & $     -3$ & $     -4$ \\
+\texttt{7 \% -2}  & $\;\;\:1$ & $     -1$ \\
+\texttt{-7 // -2} & $\;\;\:3$ & $\;\;\:3$  \\
+\texttt{-7 \% -2} & $     -1$ & $     -1$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\pycode{basic/hacks/io.py}
+\pycode{basic/hacks/recursion.py}
+\pycode{basic/hacks/itertools.py}
+
+\subsection{Find First Ok (Binary Search)}
+Binary search on a monotone predicate (False\dots False True\dots True). Searches \verb|[lb, rb)|, returns the first \verb|x| with \verb|ok(x) = True|, or \verb|rb| if there is none.
+\tc{\log{(rb - lb)}}
+\pycode{basic/find_first_ok.py}
+
+\subsection{Offline Segments Sum}
+Difference array: add \verb|x| to every position of \verb|[l, r)| in \tc{1}per update, then one prefix-sum pass gives the final array. 
+\tc{n + q}
+\pycode{basic/offline_segments_sum.py}
+
+\subsection{Compress Values}
+Replaces each value by its rank among distinct sorted values; also returns the sorted distinct values to map back. 
+\tc{n \log n}
+\pycode{basic/compress_values.py}
+
+\subsection{Heap Example}
+heapq is a min-heap on a list: \verb|heappush| / \verb|heappop| are \tc{\log n}.
+\pycode{basic/heap_example.py}
+
+\subsection{Previous Smaller}
+For each \verb|i|, the index of the nearest element to the left that is strictly smaller, or \verb|-1| (monotonic stack). 
+\tc{n}
+\pycode{basic/previous_smaller.py}
+
+\subsection{Window Min}
+Minimum of every window of length \verb|k| via a monotonic deque of indices.
+\tc{n}
+\pycode{basic/window_min.py}
+
+\subsection{DSU}
+Disjoint set union with iterative path compression and random linking (\tc{1} in fact). \verb|join| returns \verb|False| if both elements were already in the same set.
+\pycode{basic/dsu.py}
+
+\subsection{Fenwick Tree}
+Point update and range sum in \tc{\log n}, built in \tc{n}. Indices are 0-based; \verb|query(lb, rb)| is end-inclusive.
+\pycode{basic/fentree.py}
+
+\subsection{DFS Iterative}
+Depth-first search with an explicit stack of iterators (no recursion limit problems). Returns the vertices in preorder.
+\tc{n + m}
+\pycode{basic/dfs_iterative.py}
+
+\subsection{BFS}
+Shortest paths by edge count from \verb|s|. Returns the distance (-1 if unreachable) and the previous vertex for path restoration.
+\tc{n + m}
+\pycode{basic/bfs.py}
+
+\subsection{BFS 0-1}
+Shortest paths when edge weights are only 0 or 1: 0-edges go to the front of the deque, 1-edges to the back; stale entries are skipped.
+\tc{n + m}
+\pycode{basic/bfs_01.py}
+
+\subsection{Graph Components}
+Labels each vertex with its connected component using iterative DFS; returns the labels and the number of components.
+\tc{n + m}
+\pycode{basic/graph_components.py}
+
+\subsection{Kruskal (Min Spanning Tree)}
+Minimum spanning tree: sort edges by weight, add an edge if it joins two different components (uses \verb|DSU|). Returns \verb|(total, edges)| or \verb|None| if the graph is disconnected.
+\tc{n + m}
+\pycode{basic/kruskal.py}
+
+\subsection{Knapsack 0-1}
+Each item is used at most once; the inner loop over capacity goes downward so an item is not reused.
+\tc{n \cdot \text{capacity}}
+\pycode{basic/knapsack_01.py}
+
+\subsection{Knapsack Unbounded}
+Each item can be used any number of times; the inner loop goes upward.
+\tc{n \cdot \text{capacity}}
+\pycode{basic/knapsack_unbounded.py}
+
+\subsection{Min Coins}
+Minimum number of coins summing to target, or -1 if impossible.
+\tc{\text{target} \cdot \text{len(coins)}}
+\pycode{basic/min_coins.py}
+
+\subsection{Longest Increasing Subsequence}
+Keeps the smallest possible tail for each length and replaces tails via binary search. Strict version with \verb|bisect_left|, non-decreasing with \verb|bisect_right|.
+\tc{n \log n}
+\pycode{basic/lis_length.py}
+
+\subsection{Longest Common Subsequence}
+Length of the LCS with a rolling DP row.
+\tc{\text{len(a)} \cdot \text{len(b)}}
+\pycode{basic/lcs_length.py}
+
+\subsection{Levenshtein Editing Distance}
+Minimum number of insertions, deletions and substitutions to turn \verb|a| into \verb|b|.
+\tc{\text{len(a)} \cdot \text{len(b)}}
+\pycode{basic/levenshtein.py}
+
+\subsection{Binary Pow}
+Computes $a^b \% m$ in \tc{\log b} by repeated squaring (the built-in \verb|pow(a, b, mod)| does the same).
+\pycode{basic/binpow.py}
+
+\subsection{Binomials}
+Precomputes factorials and inverse factorials in \tc{\text{n\_max}} and returns \verb|choose(n, k) % mod| in \tc{1}. \verb|mod| must be prime and greater than \verb|n_max|.
+\pycode{basic/binomial_table.py}

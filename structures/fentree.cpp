@@ -31,8 +31,6 @@ struct Fentree {
   int lower_bound(T x) {
     int i = 0;
     for (int pw = bit_floor(tree.size()); pw >= 1; pw >>= 1) {
-      if (i + pw < tree.size() and tree[i + pw] < x) {
-        i += pw; x -= tree[i];
-      }
+      if (i + pw < tree.size() and tree[i + pw] < x) { i += pw; x -= tree[i]; }
     } return i;
   } };

@@ -1,6 +1,5 @@
 void dfs(int v, int p = -1) {
-  seen[v] = true; tin[v] = low[v] = timer++;
-  int children = 0;
+  seen[v] = true; tin[v] = low[v] = timer++; int children = 0;
   for (int to: graph[v]) {
     if (to == p) continue;
     if (seen[to]) {

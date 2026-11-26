@@ -18,22 +18,6 @@ Set/map with two additional ops.
     \item \verb|size_t order_of_key(K key)|
 \end{itemize}
 
-\subsection{Rope}
-
-\verb|rope| -- vector with fast slicing, insertion, but slow accessing.
-\complexity{\log n}{n}
-\cppcode{structures/rope.cpp}
-
-\begin{itemize}
-    \item \verb|void push_back(T elem)|
-    \item \verb|void pop_back()|
-    \item \verb|void insert(int pos, rope targ)|
-    \item \verb|void erase(int pos, int count)|
-    \item \verb|rope substr(int pos, int count)|
-    \item \verb|void replace(int pos, int count, rope targ)|
-    \item \verb|rope operator+(rope lhs, rope rhs)|
-\end{itemize}
-
 \subsection{Segment Tree}
 
 Zero-indexed.
@@ -42,29 +26,44 @@ Segments exclude end: $[a, b)$.
 \complexity{\log n}{n}
 \cppcode{structures/segtree.cpp}
 
-\subsection{Lazy Segment Tree}
+\pagebreak
 
 The same, but also can update a whole segment.
 \complexity{\log n}{n}
-\cppcode{structures/lazy_segtree.cpp}
+\cppcode{structures/segtree_lazy.cpp}
 
 \subsection{Fenwick Tree}
 
 Zero-indexed.
 Segments include end: $[a, b]$.
 \verb|tree[0]| isn't used.
-Counting \verb|data| is one-indexed: \verb|tree[i]| keeps \verb|f(data[i - (i & -i) + 1, i])|, \verb|data[i]| is counted in all \verb|i := i + (i & -i)|.
-\\
-\complexity{\log n}{n}
+\verb|data| is 1B: \verb|tree[i]| keeps \verb|f(data[i - (i & -i) + 1, i])|, \verb|data[i]| is counted in all \verb|i := i + (i & -i)|.
+\tc{\log n}
 \cppcode{structures/fentree.cpp}
-
-\subsection{2D Fenwick Tree}
 
 The same, but on the plane.
 \complexity{\log n \log m}{nm}
-\cppcode{structures/2d_fentree.cpp}
+\cppcode{structures/fentree_2d.cpp}
+
+The same, but for maximum. Only increasing value updates allowed.
+\tc{\log^2 n}
+\cppcode{structures/fentree_max.cpp}
 
 \subsection{RMQ}
 
 Query minimum on any range in $O(1)$. Preproc: \complexity{n \log n}{n \log n}
 \cppcode{structures/rmq.cpp}
+
+\subsection{Rope}
+
+\verb|rope| -- vector with fast slicing, insertion, but slow accessing.
+\complexity{\log n}{n}
+\cppcode{structures/rope.cpp}
+
+\begin{itemize}
+    \item \verb|void insert(int pos, rope targ)|
+    \item \verb|void erase(int pos, int count)|
+    \item \verb|rope substr(int pos, int count)|
+    \item \verb|void replace(int pos, int count, rope targ)|
+    \item \verb|rope operator+(rope lhs, rope rhs)|
+\end{itemize}

@@ -15,4 +15,5 @@ struct DSU {
   void undo(int t) {
     for (int i = time(); i --> t;) e[st[i].first] = st[i].second;
     st.resize(t);
-  } };
+  }
+};
